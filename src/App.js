@@ -4,7 +4,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from './About';
+import Footer from './Footer';
 import Home from './Home';
+import Privacy from './Privacy';
 import Projects from './Projects';
 
 require('typeface-abril-fatface');
@@ -18,6 +20,10 @@ const theme = createMuiTheme({
       color: 'white',
       fontSize: '72px',
       textTransform: 'uppercase',
+    },
+    caption: {
+      fontFamily: 'Montserrat',
+      fontSize: '0.75em',
     },
   },
 });
@@ -41,11 +47,13 @@ const App = ({
     <MuiThemeProvider theme={theme}>
       <Router>
         <div className={classes.app}>
-        <React.Fragment>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/projects" component={Projects} />
-        </React.Fragment>
+          <React.Fragment>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/projects" component={Projects} />
+            <Route path="/privacy" component={Privacy} />
+          </React.Fragment>
+          <Footer />
         </div>
       </Router>
     </MuiThemeProvider>
