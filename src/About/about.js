@@ -1,10 +1,10 @@
 import React from 'react';
 import Page from '../Page';
 
-const Home = () => (
+const About = () => (
   <Page>
-    Home
+    About
   </Page>
 );
 
-export default Home;
+export default About;

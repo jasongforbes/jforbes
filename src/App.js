@@ -2,9 +2,12 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import About from './About';
 import Home from './Home';
+import Projects from './Projects';
 
 require('typeface-abril-fatface');
+require('typeface-montserrat');
 
 const theme = createMuiTheme({
   typography: {
@@ -23,7 +26,11 @@ const App = () => (
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
       <Router>
-        <Route exact path="/" component={Home} />
+        <React.Fragment>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/projects" component={Projects} />
+        </React.Fragment>
       </Router>
     </MuiThemeProvider>
   </React.Fragment>

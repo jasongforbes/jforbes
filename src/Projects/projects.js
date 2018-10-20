@@ -1,10 +1,10 @@
 import React from 'react';
 import Page from '../Page';
 
-const Home = () => (
+const Projects = () => (
   <Page>
-    Home
+    Projects
   </Page>
 );
 
-export default Home;
+export default Projects;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -26,6 +27,22 @@ const styles = () => ({
   headerText: {
     padding: '15px 24px 15px 159px',
   },
+  links: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '100px 163px',
+  },
+  link: {
+    fontFamily: 'Montserrat',
+    color: 'rgba(9, 51, 79, 0.6)',
+    fontSize: '24px',
+    padding: '12px 0px',
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    '&.active': {
+      color: 'rgba(9, 51, 79, 1.0)',
+    },
+  },
 });
 
 const Sidebar = ({
@@ -39,6 +56,11 @@ const Sidebar = ({
           Jason Forbes
         </Typography>
       </div>
+    </div>
+    <div className={classes.links}>
+      <NavLink className={classes.link} to="/" exact>Writing</NavLink>
+      <NavLink className={classes.link} to="/about">About</NavLink>
+      <NavLink className={classes.link} to="/projects">Projects</NavLink>
     </div>
   </React.Fragment>
 );
