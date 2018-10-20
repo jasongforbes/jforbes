@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from './About';
 import Home from './Home';
@@ -21,19 +22,38 @@ const theme = createMuiTheme({
   },
 });
 
-const App = () => (
+const styles = () => ({
+  app: {
+    display: 'flex',
+    width: '100%',
+    padding: '0px 12px 0px 0px',
+    flexDirection: 'column',
+    minHeight: '100vh',
+    justifyContent: 'space-between',
+  },
+});
+
+const App = ({
+  classes,
+}) => (
   <React.Fragment>
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
       <Router>
+        <div className={classes.app}>
         <React.Fragment>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/projects" component={Projects} />
         </React.Fragment>
+        </div>
       </Router>
     </MuiThemeProvider>
   </React.Fragment>
 );
 
-export default App;
+App.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+};
+
+export default withStyles(styles)(App);
