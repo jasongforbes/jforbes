@@ -26,6 +26,12 @@ const theme = createMuiTheme({
       fontSize: '0.75em',
     },
   },
+  palette: {
+    primary: {
+      light: 'rgba(9, 51, 79, 0.6)',
+      main: 'rgba(9, 51, 79, 1.0)',
+    },
+  },
 });
 
 const styles = () => ({

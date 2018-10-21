@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import headshot from '../images/headshot.jpg';
 
-const styles = () => ({
+const styles = theme => ({
   header: {
     position: 'relative',
     height: '483px',
@@ -34,13 +34,14 @@ const styles = () => ({
   },
   link: {
     fontFamily: 'Montserrat',
-    color: 'rgba(9, 51, 79, 0.6)',
+    color: theme.palette.primary.light,
     fontSize: '24px',
     padding: '12px 0px',
     textTransform: 'uppercase',
     textDecoration: 'none',
     '&.active': {
-      color: 'rgba(9, 51, 79, 1.0)',
+      color: theme.palette.primary.main,
+    },
     },
   },
 });
