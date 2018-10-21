@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import headshot from '../images/headshot.jpg';
+import { TwitterRound, InstagramRound, EmailRound } from '../icons';
 
 const styles = theme => ({
   header: {
@@ -42,7 +44,18 @@ const styles = theme => ({
     '&.active': {
       color: theme.palette.primary.main,
     },
-    },
+  },
+  social: {
+    display: 'flex',
+    padding: '24px 138px 128px 164px',
+    maxWidth: '483px',
+    margin: '0px -14.25px',
+    justifyContent: 'space-between',
+  },
+  socialImage: {
+    width: '36px',
+    height: '36px',
+    margin: '0px 14.25px',
   },
 });
 
@@ -62,6 +75,11 @@ const Sidebar = ({
       <NavLink className={classes.link} to="/" exact>Writing</NavLink>
       <NavLink className={classes.link} to="/about">About</NavLink>
       <NavLink className={classes.link} to="/projects">Projects</NavLink>
+    </div>
+    <div className={classes.social}>
+      <a href="https://twitter.com/JasonForbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><TwitterRound /></SvgIcon></a>
+      <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><InstagramRound /></SvgIcon></a>
+      <a href="mailto:jason@jforbes.io" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><EmailRound /></SvgIcon></a>
     </div>
   </React.Fragment>
 );
