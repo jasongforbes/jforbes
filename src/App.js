@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Home from './Home';
 import Privacy from './Privacy';
 import Projects from './Projects';
+import ScrollToTop from './ScrollToTop';
 
 require('typeface-abril-fatface');
 require('typeface-montserrat');
@@ -52,15 +53,17 @@ const App = ({
     <CssBaseline />
     <MuiThemeProvider theme={theme}>
       <Router>
-        <div className={classes.app}>
-          <React.Fragment>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/projects" component={Projects} />
-            <Route path="/privacy" component={Privacy} />
-          </React.Fragment>
-          <Footer />
-        </div>
+        <ScrollToTop>
+          <div className={classes.app}>
+            <React.Fragment>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/projects" component={Projects} />
+              <Route path="/privacy" component={Privacy} />
+            </React.Fragment>
+            <Footer />
+          </div>
+        </ScrollToTop>
       </Router>
     </MuiThemeProvider>
   </React.Fragment>
