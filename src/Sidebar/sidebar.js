@@ -12,6 +12,10 @@ const styles = theme => ({
     position: 'relative',
     height: '483px',
     width: '483px',
+    [theme.breakpoints.down('lg')]: {
+      height: '417px',
+      width: '417px',
+    },
   },
   headerImage: {
     position: 'absolute',
@@ -28,11 +32,17 @@ const styles = theme => ({
   },
   headerText: {
     padding: '15px 24px 15px 159px',
+    [theme.breakpoints.down('xl')]: {
+      padding: '15px 24px 15px 106px',
+    },
   },
   links: {
     display: 'flex',
     flexDirection: 'column',
     padding: '100px 163px',
+    [theme.breakpoints.down('xl')]: {
+      padding: '128px 110px',
+    },
   },
   link: {
     fontFamily: 'Montserrat',
@@ -45,12 +55,21 @@ const styles = theme => ({
       color: theme.palette.primary.main,
     },
   },
+  sidebarText: {
+    padding: '0px 0px 0px 159px',
+    [theme.breakpoints.down('lg')]: {
+      padding: '0px 0px 0px 106px',
+    },
+  },
   social: {
     display: 'flex',
     padding: '24px 138px 128px 164px',
     maxWidth: '483px',
     margin: '0px -14.25px',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('xl')]: {
+      padding: '24px 138px 128px 110px',
+    },
   },
   socialImage: {
     width: '36px',
