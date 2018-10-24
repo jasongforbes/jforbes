@@ -9,6 +9,7 @@ import Home from './Home';
 import Privacy from './Privacy';
 import Projects from './Projects';
 import ScrollToTop from './ScrollToTop';
+import withTracker from './withTracker';
 
 require('typeface-abril-fatface');
 require('typeface-montserrat');
@@ -56,10 +57,10 @@ const App = ({
         <ScrollToTop>
           <div className={classes.app}>
             <React.Fragment>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/projects" component={Projects} />
-              <Route path="/privacy" component={Privacy} />
+              <Route exact path="/" component={withTracker(Home)} />
+              <Route path="/about" component={withTracker(About)} />
+              <Route path="/projects" component={withTracker(Projects)} />
+              <Route path="/privacy" component={withTracker(Privacy)} />
             </React.Fragment>
             <Footer />
           </div>
