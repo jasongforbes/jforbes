@@ -31,18 +31,12 @@ const styles = theme => ({
     zIndex: 2,
   },
   headerText: {
-    padding: '15px 24px 15px 159px',
-    [theme.breakpoints.down('xl')]: {
-      padding: '15px 24px 15px 106px',
-    },
+    padding: '15px 24px 15px 0px',
   },
   links: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '100px 163px',
-    [theme.breakpoints.down('xl')]: {
-      padding: '128px 110px',
-    },
+    padding: '128px 4px',
   },
   link: {
     fontFamily: 'Montserrat',
@@ -63,13 +57,10 @@ const styles = theme => ({
   },
   social: {
     display: 'flex',
-    padding: '24px 138px 128px 164px',
+    padding: '24px 138px 128px 5px',
     maxWidth: '483px',
     margin: '0px -14.25px',
     justifyContent: 'space-between',
-    [theme.breakpoints.down('xl')]: {
-      padding: '24px 138px 128px 110px',
-    },
   },
   socialImage: {
     width: '36px',
@@ -84,21 +75,23 @@ const Sidebar = ({
   <React.Fragment>
     <div className={classes.header}>
       <img className={classes.headerImage} src={headshot} alt="Headshot" />
-      <div className={classes.headerTextBackground}>
+      <div className={[classes.headerTextBackground, classes.sidebarText].join(' ')}>
         <Typography variant="h1" className={classes.headerText}>
           Jason Forbes
         </Typography>
       </div>
     </div>
-    <div className={classes.links}>
-      <NavLink className={classes.link} to="/" exact>Writing</NavLink>
-      <NavLink className={classes.link} to="/about">About</NavLink>
-      <NavLink className={classes.link} to="/projects">Projects</NavLink>
-    </div>
-    <div className={classes.social}>
-      <a href="https://twitter.com/JasonForbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><TwitterRound /></SvgIcon></a>
-      <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><InstagramRound /></SvgIcon></a>
-      <a href="mailto:jason@jforbes.io" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><EmailRound /></SvgIcon></a>
+    <div className={classes.sidebarText}>
+      <div className={classes.links}>
+        <NavLink className={classes.link} to="/" exact>Writing</NavLink>
+        <NavLink className={classes.link} to="/about">About</NavLink>
+        <NavLink className={classes.link} to="/projects">Projects</NavLink>
+      </div>
+      <div className={classes.social}>
+        <a href="https://twitter.com/JasonForbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><TwitterRound /></SvgIcon></a>
+        <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><InstagramRound /></SvgIcon></a>
+        <a href="mailto:jason@jforbes.io" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><EmailRound /></SvgIcon></a>
+      </div>
     </div>
   </React.Fragment>
 );
