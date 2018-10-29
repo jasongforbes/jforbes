@@ -8162,6 +8162,10 @@ typeface-abril-fatface@^0.0.54:
   version "0.0.54"
   resolved "https://registry.yarnpkg.com/typeface-abril-fatface/-/typeface-abril-fatface-0.0.54.tgz#99fa03ae6303124d574c3a6e2494186cfc2362f3"
 
+typeface-inconsolata@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-inconsolata/-/typeface-inconsolata-0.0.54.tgz#9a7f7726eb615a3ab53dc19732f6c77adc65d5b5"
+
 typeface-montserrat@^0.0.54:
   version "0.0.54"
   resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"

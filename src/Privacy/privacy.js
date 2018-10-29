@@ -5,7 +5,7 @@ const Privacy = () => (
   <div>
     <div>
       <Typography variant="h3">Privacy Policy</Typography>
-      <Typography variant="body1">Effective date: October 22, 2018</Typography>
+      <Typography variant="subtitle1">Effective date: October 22, 2018</Typography>
       <Typography variant="body1">
         Jason Forbes (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;) operates the
         https://jforbes.io website (the &quot;Service&quot;).

@@ -12,6 +12,7 @@ import ScrollToTop from './ScrollToTop';
 import withTracker from './withTracker';
 
 require('typeface-abril-fatface');
+require('typeface-inconsolata');
 require('typeface-montserrat');
 
 const theme = createMuiTheme({
@@ -22,6 +23,22 @@ const theme = createMuiTheme({
       color: 'white',
       fontSize: '72px',
       textTransform: 'uppercase',
+    },
+    h3: {
+      fontFamily: 'Inconsolata',
+      color: '#08141D',
+      fontSize: '36px',
+    },
+    subtitle1: {
+      fontFamily: 'Inconsolata',
+      color: '#08141D',
+      fontSize: '18px',
+    },
+    body1: {
+      fontFamily: 'Montserrat',
+      color: '#6B6B6B',
+      fontSize: '24px',
+      lineHeight: '36px',
     },
     caption: {
       fontFamily: 'Montserrat',
