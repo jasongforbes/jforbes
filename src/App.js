@@ -40,6 +40,14 @@ const theme = createMuiTheme({
       fontSize: '24px',
       lineHeight: '36px',
     },
+    button: {
+      fontFamily: 'Montserrat',
+      color: 'rgba(9, 51, 79, 1.0)',
+      fontSize: '1em',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      letterSpacing: '1px',
+    },
     caption: {
       fontFamily: 'Montserrat',
       fontSize: '0.75em',

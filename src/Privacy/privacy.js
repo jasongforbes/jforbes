@@ -1,8 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import FullPage from '../FullPage';
 
 const Privacy = () => (
-  <div>
+  <FullPage>
     <div>
       <Typography variant="h3">Privacy Policy</Typography>
       <Typography variant="subtitle1">Effective date: October 22, 2018</Typography>
@@ -190,7 +191,7 @@ const Privacy = () => (
         </Typography>
         <Typography variant="body1">
           For more information on the privacy practices of Google, please visit the Google
-          Privacy & Terms web page:
+            Privacy & Terms web page:
           {' '}
           <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>
         </Typography>
@@ -245,7 +246,7 @@ const Privacy = () => (
         </Typography>
       </li>
     </ul>
-  </div>
+  </FullPage>
 );
 
 export default Privacy;
