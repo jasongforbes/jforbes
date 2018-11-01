@@ -1,15 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 import FullPage from '../FullPage';
 
-const Privacy = () => (
+const styles = theme => ({
+  listItem: theme.typography.list,
+});
+
+const Privacy = ({ classes }) => (
   <FullPage>
     <div>
       <Typography variant="h3">Privacy Policy</Typography>
       <Typography variant="subtitle1">Effective date: October 22, 2018</Typography>
       <Typography variant="body1">
         Jason Forbes (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;) operates the
-        https://jforbes.io website (the &quot;Service&quot;).
+        {' '}
+        <a href="https://jforbes.io">https://jforbes.io</a>
+        {' '}
+        website (the &quot;Service&quot;).
       </Typography>
       <Typography variant="body1">
         This page informs you of our policies regarding the collection, use, and disclosure of
@@ -20,7 +29,9 @@ const Privacy = () => (
         By using the Service, you agree to the collection and use of information in accordance
         with this policy. Unless otherwise defined in this Privacy Policy, terms used in this
         Privacy Policy have the same meanings as in our Terms and Conditions, accessible from
-        https://jforbes.io
+        {' '}
+        <a href="https://jforbes.io">https://jforbes.io</a>
+        .
       </Typography>
     </div>
 
@@ -43,9 +54,9 @@ const Privacy = () => (
     </Typography>
 
     <ul>
-      <li><Typography variant="body1">Email address</Typography></li>
-      <li><Typography variant="body1">First name and last name</Typography></li>
-      <li><Typography variant="body1">Cookies and Usage Data</Typography></li>
+      <li><Typography className={classes.listItem}>Email address</Typography></li>
+      <li><Typography className={classes.listItem}>First name and last name</Typography></li>
+      <li><Typography className={classes.listItem}>Cookies and Usage Data</Typography></li>
     </ul>
 
     <Typography variant="h6">Usage Data</Typography>
@@ -76,21 +87,21 @@ const Privacy = () => (
     <Typography variant="body1">Examples of Cookies we use:</Typography>
     <ul>
       <li>
-        <Typography variant="body1">
+        <Typography className={classes.listItem}>
           <strong>Session Cookies.</strong>
           {' '}
           We use Session Cookies to operate our Service.
         </Typography>
       </li>
       <li>
-        <Typography variant="body1">
+        <Typography className={classes.listItem}>
           <strong>Preference Cookies.</strong>
           {' '}
           We use Preference Cookies to remember your preferences and various settings.
         </Typography>
       </li>
       <li>
-        <Typography variant="body1">
+        <Typography className={classes.listItem}>
           <strong>Security Cookies.</strong>
           {' '}
           We use Security Cookies for security purposes.
@@ -102,18 +113,18 @@ const Privacy = () => (
 
     <Typography variant="body1">Jason Forbes uses the collected data for various purposes:</Typography>
     <ul>
-      <li><Typography variant="body1">To provide and maintain the Service</Typography></li>
-      <li><Typography variant="body1">To notify you about changes to our Service</Typography></li>
+      <li><Typography className={classes.listItem}>To provide and maintain the Service</Typography></li>
+      <li><Typography className={classes.listItem}>To notify you about changes to our Service</Typography></li>
       <li>
-        <Typography variant="body1">
+        <Typography className={classes.listItem}>
           To allow you to participate in interactive features of our
           Service when you choose to do so
         </Typography>
       </li>
-      <li><Typography variant="body1">To provide customer care and support</Typography></li>
-      <li><Typography variant="body1">To provide analysis or valuable information so that we can improve the Service</Typography></li>
-      <li><Typography variant="body1">To monitor the usage of the Service</Typography></li>
-      <li><Typography variant="body1">To detect, prevent and address technical issues</Typography></li>
+      <li><Typography className={classes.listItem}>To provide customer care and support</Typography></li>
+      <li><Typography className={classes.listItem}>To provide analysis or valuable information so that we can improve the Service</Typography></li>
+      <li><Typography className={classes.listItem}>To monitor the usage of the Service</Typography></li>
+      <li><Typography className={classes.listItem}>To detect, prevent and address technical issues</Typography></li>
     </ul>
 
     <Typography variant="h4">Transfer Of Data</Typography>
@@ -145,11 +156,11 @@ const Privacy = () => (
       action is necessary to:
     </Typography>
     <ul>
-      <li><Typography variant="body1">To comply with a legal obligation</Typography></li>
-      <li><Typography variant="body1">To protect and defend the rights or property of Jason Forbes</Typography></li>
-      <li><Typography variant="body1">To prevent or investigate possible wrongdoing in connection with the Service</Typography></li>
-      <li><Typography variant="body1">To protect the personal safety of users of the Service or the public</Typography></li>
-      <li><Typography variant="body1">To protect against legal liability</Typography></li>
+      <li><Typography className={classes.listItem}>To comply with a legal obligation</Typography></li>
+      <li><Typography className={classes.listItem}>To protect and defend the rights or property of Jason Forbes</Typography></li>
+      <li><Typography className={classes.listItem}>To prevent or investigate possible wrongdoing in connection with the Service</Typography></li>
+      <li><Typography className={classes.listItem}>To protect the personal safety of users of the Service or the public</Typography></li>
+      <li><Typography className={classes.listItem}>To protect against legal liability</Typography></li>
     </ul>
 
     <Typography variant="h4">Security Of Data</Typography>
@@ -175,7 +186,7 @@ const Privacy = () => (
     <Typography variant="body1">We may use third-party Service Providers to monitor and analyze the use of our Service.</Typography>
     <ul>
       <li>
-        <Typography variant="body1"><strong>Google Analytics</strong></Typography>
+        <Typography className={classes.listItem}><strong>Google Analytics</strong></Typography>
         <Typography variant="body1">
           Google Analytics is a web analytics service offered by Google that tracks and
           reports website traffic. Google uses the data collected to track and monitor the
@@ -239,7 +250,7 @@ const Privacy = () => (
     <Typography variant="body1">If you have any questions about this Privacy Policy, please contact us:</Typography>
     <ul>
       <li>
-        <Typography variant="body1">
+        <Typography className={classes.listItem}>
           By email:
           {' '}
           <a href="mailto:privacy@jforbes.io">privacy@jforbes.io</a>
@@ -249,4 +260,8 @@ const Privacy = () => (
   </FullPage>
 );
 
-export default Privacy;
+Privacy.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+};
+
+export default withStyles(styles)(Privacy);
