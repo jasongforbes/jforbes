@@ -11,6 +11,8 @@ import Projects from './Projects';
 import ScrollToTop from './ScrollToTop';
 import withTracker from './withTracker';
 
+import './App.css';
+
 require('typeface-abril-fatface');
 require('typeface-inconsolata');
 require('typeface-montserrat');
@@ -26,19 +28,45 @@ const theme = createMuiTheme({
     },
     h3: {
       fontFamily: 'Inconsolata',
-      color: '#08141D',
-      fontSize: '36px',
+      color: 'rgba(8, 20, 29, 1.0)',
+      fontSize: '1.5em',
+      lineHeight: '1em',
+      marginBottom: '1em',
+    },
+    h4: {
+      fontFamily: 'Montserrat',
+      color: 'rgba(8, 20, 29, 1.0)',
+      fontSize: '1.3125em',
+      lineHeight: '1.142857142857143em',
+      marginBottom: '1.142857142857143em',
+    },
+    h5: {
+      fontFamily: 'Montserrat',
+      color: 'rgba(8, 20, 29, 1.0)',
+      fontSize: '1.125em',
+      lineHeight: '1.333333333333333em',
+      marginBottom: '0.6666666666666667em',
+    },
+    h6: {
+      fontFamily: 'Montserrat',
+      color: 'rgba(8, 20, 29, 1.0)',
+      fontSize: '1em',
+      lineHeight: '1.5em',
+      marginBottom: '1.5em',
     },
     subtitle1: {
       fontFamily: 'Inconsolata',
-      color: '#08141D',
-      fontSize: '18px',
+      color: 'rgba(8, 20, 29, 0.6)',
+      fontSize: '0.75em',
+      marginTop: '-1.5em',
+      marginBottom: '1.5em',
     },
     body1: {
       fontFamily: 'Montserrat',
       color: '#6B6B6B',
-      fontSize: '24px',
-      lineHeight: '36px',
+      fontSize: '1em',
+      lineHeight: '1.5em',
+      marginBottom: '1.5em',
     },
     button: {
       fontFamily: 'Montserrat',
@@ -51,6 +79,12 @@ const theme = createMuiTheme({
     caption: {
       fontFamily: 'Montserrat',
       fontSize: '0.75em',
+    },
+    list: {
+      fontFamily: 'Montserrat',
+      color: '#6B6B6B',
+      fontSize: '1em',
+      lineHeight: '1.5em',
     },
   },
   palette: {
