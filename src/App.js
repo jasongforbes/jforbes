@@ -106,9 +106,7 @@ const styles = () => ({
   },
 });
 
-const App = ({
-  classes,
-}) => (
+const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
     <MuiThemeProvider theme={theme}>

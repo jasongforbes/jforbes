@@ -54,7 +54,7 @@ FullPage.propTypes = {
 };
 
 FullPage.defaultProps = {
-  children: (<div />),
+  children: <div />,
 };
 
 export default withStyles(styles)(FullPage);

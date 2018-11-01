@@ -69,9 +69,7 @@ const styles = theme => ({
   },
 });
 
-const Sidebar = ({
-  classes,
-}) => (
+const Sidebar = ({ classes }) => (
   <React.Fragment>
     <div className={classes.header}>
       <img className={classes.headerImage} src={headshot} alt="Headshot" />
@@ -83,14 +81,32 @@ const Sidebar = ({
     </div>
     <div className={classes.sidebarText}>
       <div className={classes.links}>
-        <NavLink className={classes.link} to="/" exact>Writing</NavLink>
-        <NavLink className={classes.link} to="/about">About</NavLink>
-        <NavLink className={classes.link} to="/projects">Projects</NavLink>
+        <NavLink className={classes.link} to="/" exact>
+          Writing
+        </NavLink>
+        <NavLink className={classes.link} to="/about">
+          About
+        </NavLink>
+        <NavLink className={classes.link} to="/projects">
+          Projects
+        </NavLink>
       </div>
       <div className={classes.social}>
-        <a href="https://twitter.com/JasonForbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><TwitterRound /></SvgIcon></a>
-        <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><InstagramRound /></SvgIcon></a>
-        <a href="mailto:jason@jforbes.io" className={classes.socialImage}><SvgIcon color="primary" fontSize="large"><EmailRound /></SvgIcon></a>
+        <a href="https://twitter.com/JasonForbes" className={classes.socialImage}>
+          <SvgIcon color="primary" fontSize="large">
+            <TwitterRound />
+          </SvgIcon>
+        </a>
+        <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}>
+          <SvgIcon color="primary" fontSize="large">
+            <InstagramRound />
+          </SvgIcon>
+        </a>
+        <a href="mailto:jason@jforbes.io" className={classes.socialImage}>
+          <SvgIcon color="primary" fontSize="large">
+            <EmailRound />
+          </SvgIcon>
+        </a>
       </div>
     </div>
   </React.Fragment>

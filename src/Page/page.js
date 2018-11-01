@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Sidebar from '../Sidebar';
 
-const Page = ({
-  children,
-}) => (
+const Page = ({ children }) => (
   <Grid container spacing={24}>
     <Grid item xs={3}>
       <Sidebar />
@@ -21,7 +19,7 @@ Page.propTypes = {
 };
 
 Page.defaultProps = {
-  children: (<div />),
+  children: <div />,
 };
 
 export default Page;

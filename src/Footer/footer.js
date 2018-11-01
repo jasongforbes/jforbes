@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = ({
+const styles = {
   footer: {
     display: 'flex',
     flexDirection: 'column',
@@ -24,16 +24,16 @@ const styles = ({
     textDecoration: 'none',
     textTransform: 'uppercase',
   },
-});
+};
 
-const Footer = ({
-  classes,
-}) => (
+const Footer = ({ classes }) => (
   <div className={classes.footer}>
     <Typography variant="caption" className={classes.copyright}>
       Copyright © 2017 Jason Forbes
     </Typography>
-    <Link to="/privacy" className={classes.privacyLink}>Privacy</Link>
+    <Link to="/privacy" className={classes.privacyLink}>
+      Privacy
+    </Link>
   </div>
 );
 
