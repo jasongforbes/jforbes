@@ -10,23 +10,22 @@ import { TwitterRound, InstagramRound, EmailRound } from '../icons';
 const styles = theme => ({
   header: {
     position: 'relative',
-    height: '483px',
-    width: '483px',
+    minHeight: '483px',
+    minWidth: '483px',
+    overflow: 'hidden',
     [theme.breakpoints.down('lg')]: {
-      height: '417px',
-      width: '417px',
+      minHeight: '417px',
+      minWidth: '417px',
     },
   },
   headerImage: {
-    position: 'absolute',
-    height: '100%',
+    display: 'block',
     width: '100%',
   },
   headerTextBackground: {
     position: 'absolute',
     bottom: '0px',
     width: '100%',
-    height: '174px',
     backgroundColor: 'rgba(25, 25, 25, 0.65)',
     zIndex: 2,
   },
@@ -58,7 +57,7 @@ const styles = theme => ({
   social: {
     display: 'flex',
     padding: '24px 138px 128px 5px',
-    maxWidth: '483px',
+    maxWidth: '165px',
     margin: '0px -14.25px',
     justifyContent: 'space-between',
   },

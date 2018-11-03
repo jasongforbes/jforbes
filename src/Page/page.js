@@ -5,12 +5,14 @@ import Sidebar from '../Sidebar';
 
 const Page = ({ children }) => (
   <Grid container spacing={24}>
-    <Grid item xs={3}>
+    <Grid item lg={4} xl={3}>
       <Sidebar />
     </Grid>
-    <Grid item xs={9}>
+    <Grid item lg={1} />
+    <Grid item lg={6} xl={8}>
       {children}
     </Grid>
+    <Grid item lg={1} />
   </Grid>
 );
 
