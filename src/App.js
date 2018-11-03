@@ -99,7 +99,6 @@ const styles = () => ({
   app: {
     display: 'flex',
     width: '100%',
-    padding: '0px 12px 0px 0px',
     flexDirection: 'column',
     minHeight: '100vh',
     justifyContent: 'space-between',

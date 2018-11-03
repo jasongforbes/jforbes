@@ -12,7 +12,6 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#D8D8D8',
     height: 64,
-    margin: '0px -12px 0px 0px',
   },
   copyright: {
     color: '#979797',

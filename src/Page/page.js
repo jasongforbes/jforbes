@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Sidebar from '../Sidebar';
 
 const Page = ({ children }) => (
-  <Grid container spacing={24}>
+  <Grid container spacing={0}>
     <Grid item lg={4} xl={3}>
       <Sidebar />
     </Grid>
