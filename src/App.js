@@ -72,9 +72,12 @@ const theme = createMuiTheme({
       fontFamily: 'Montserrat',
       color: 'rgba(9, 51, 79, 1.0)',
       fontSize: '1em',
-      fontWeight: 'bold',
+      lineHeight: '1em',
+      textAlign: 'center',
+      fontWeight: '500',
       textTransform: 'uppercase',
       letterSpacing: '1px',
+      textDecoration: 'none',
     },
     caption: {
       fontFamily: 'Montserrat',
@@ -91,6 +94,9 @@ const theme = createMuiTheme({
     primary: {
       light: 'rgba(9, 51, 79, 0.6)',
       main: 'rgba(9, 51, 79, 1.0)',
+    },
+    secondary: {
+      main: '#FFF',
     },
   },
 });

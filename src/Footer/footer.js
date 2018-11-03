@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
-const styles = {
+const styles = theme => ({
   footer: {
     display: 'flex',
     flexDirection: 'column',
@@ -17,13 +17,11 @@ const styles = {
     color: '#979797',
   },
   privacyLink: {
-    fontFamily: 'Montserrat Semibold',
+    ...theme.typography.button,
     fontSize: '0.75em',
     color: '#979797',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
   },
-};
+});
 
 const Footer = ({ classes }) => (
   <div className={classes.footer}>

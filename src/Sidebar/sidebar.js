@@ -38,12 +38,9 @@ const styles = theme => ({
     padding: '128px 4px',
   },
   link: {
-    fontFamily: 'Montserrat',
+    ...theme.typography.button,
     color: theme.palette.primary.light,
-    fontSize: '24px',
     padding: '12px 0px',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
     '&.active': {
       color: theme.palette.primary.main,
     },
