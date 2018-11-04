@@ -1,12 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
+import { Route } from 'react-router-dom';
+import About from '../About';
 import Header from '../Header';
+import Home from '../Home';
 import MobileHeader from '../MobileHeader';
+import Projects from '../Projects';
 import Sidebar from '../Sidebar';
 
-const Page = ({ children }) => (
+const Page = () => (
   <Grid container spacing={0}>
     <Hidden mdDown>
       <Grid item lg={3}>
@@ -25,18 +28,12 @@ const Page = ({ children }) => (
     </Hidden>
     <Grid item lg={1} />
     <Grid item lg={8}>
-      {children}
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/projects" component={Projects} />
     </Grid>
     <Grid item lg={1} />
   </Grid>
 );
-
-Page.propTypes = {
-  children: PropTypes.node,
-};
-
-Page.defaultProps = {
-  children: <div />,
-};
 
 export default Page;

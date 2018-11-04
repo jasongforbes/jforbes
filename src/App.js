@@ -4,12 +4,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import About from './About';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './Footer';
-import Home from './Home';
+import Page from './Page';
 import Privacy from './Privacy';
-import Projects from './Projects';
 import ScrollToTop from './ScrollToTop';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
@@ -130,10 +128,10 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <Route exact path="/" component={withTracker(Home)} />
-                <Route path="/about" component={withTracker(About)} />
-                <Route path="/projects" component={withTracker(Projects)} />
-                <Route path="/privacy" component={withTracker(Privacy)} />
+                <Switch>
+                  <Route path="/(about|projects)?" exact component={withTracker(Page)} />
+                  <Route path="/privacy" component={withTracker(Privacy)} />
+                </Switch>
               </React.Fragment>
               <Footer />
             </div>

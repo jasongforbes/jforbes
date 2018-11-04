@@ -1,10 +1,5 @@
 import React from 'react';
-import Page from '../Page';
 
-const About = () => (
-  <Page>
-    About
-  </Page>
-);
+const About = () => <div>About</div>;
 
 export default About;

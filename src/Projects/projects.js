@@ -1,10 +1,5 @@
 import React from 'react';
-import Page from '../Page';
 
-const Projects = () => (
-  <Page>
-    Projects
-  </Page>
-);
+const Projects = () => <div>Projects</div>;
 
 export default Projects;
