@@ -38,7 +38,7 @@ const styles = theme => ({
 const MobileHeader = ({ classes, onToggleMenu, showMenu }) => (
   <React.Fragment>
     <div className={classes.menu}>
-      <Button onClick={onToggleMenu} className={classes.button}>
+      <Button onClick={onToggleMenu} className={classes.button} aria-label="Open menu">
         <SvgIcon color="primary">
           <Menu />
         </SvgIcon>
@@ -46,7 +46,7 @@ const MobileHeader = ({ classes, onToggleMenu, showMenu }) => (
     </div>
     <Drawer anchor="top" open={showMenu} onClose={onToggleMenu}>
       <div className={classes.menu}>
-        <Button onClick={onToggleMenu} className={classes.button}>
+        <Button onClick={onToggleMenu} className={classes.button} aria-label="Close menu">
           <SvgIcon color="primary">
             <Cancel />
           </SvgIcon>
