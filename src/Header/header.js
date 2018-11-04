@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import SvgIcon from '@material-ui/core/SvgIcon';
 import headshot from '../images/headshot_wide.jpg';
 import { TwitterInner, InstagramInner, EmailInner } from '../icons';
 import HeaderImage from './headerImage';
+import Social from './social';
 
 const styles = theme => ({
   links: {
@@ -27,38 +27,12 @@ const styles = theme => ({
       color: theme.palette.primary.main,
     },
   },
-  social: {
-    display: 'flex',
-    margin: '15px -14.25px',
-    justifyContent: 'flex-end',
-  },
-  socialImage: {
-    width: '36px',
-    height: '36px',
-    margin: '0px 14.25px',
-  },
 });
 
 const Header = ({ classes }) => (
   <React.Fragment>
     <HeaderImage headshot={headshot}>
-      <div className={classes.social}>
-        <a href="https://twitter.com/JasonForbes" className={classes.socialImage}>
-          <SvgIcon color="secondary" fontSize="large">
-            <TwitterInner />
-          </SvgIcon>
-        </a>
-        <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}>
-          <SvgIcon color="secondary" fontSize="large">
-            <InstagramInner />
-          </SvgIcon>
-        </a>
-        <a href="mailto:jason@jforbes.io" className={classes.socialImage}>
-          <SvgIcon color="secondary" fontSize="large">
-            <EmailInner />
-          </SvgIcon>
-        </a>
-      </div>
+      <Social twitter={<TwitterInner />} instagram={<InstagramInner />} email={<EmailInner />} />
     </HeaderImage>
     <Grid container>
       <Grid item xs={1} />
