@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import Header from '../Header';
+import MobileHeader from '../MobileHeader';
 import Sidebar from '../Sidebar';
 
 const Page = ({ children }) => (
@@ -12,9 +13,14 @@ const Page = ({ children }) => (
         <Sidebar />
       </Grid>
     </Hidden>
-    <Hidden lgUp>
+    <Hidden only={['xs', 'lg', 'xl']}>
       <Grid item sm={12}>
         <Header />
+      </Grid>
+    </Hidden>
+    <Hidden smUp>
+      <Grid item xs={12}>
+        <MobileHeader />
       </Grid>
     </Hidden>
     <Grid item lg={1} />

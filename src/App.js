@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from './About';
 import Footer from './Footer';
@@ -9,6 +11,7 @@ import Home from './Home';
 import Privacy from './Privacy';
 import Projects from './Projects';
 import ScrollToTop from './ScrollToTop';
+import rootReducer from './reducers';
 import withTracker from './withTracker';
 
 import './App.css';
@@ -101,6 +104,13 @@ const theme = createMuiTheme({
   },
 });
 
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+/* eslint-enable */
+
 const styles = () => ({
   app: {
     display: 'flex',
@@ -114,21 +124,23 @@ const styles = () => ({
 const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
-    <MuiThemeProvider theme={theme}>
-      <Router>
-        <ScrollToTop>
-          <div className={classes.app}>
-            <React.Fragment>
-              <Route exact path="/" component={withTracker(Home)} />
-              <Route path="/about" component={withTracker(About)} />
-              <Route path="/projects" component={withTracker(Projects)} />
-              <Route path="/privacy" component={withTracker(Privacy)} />
-            </React.Fragment>
-            <Footer />
-          </div>
-        </ScrollToTop>
-      </Router>
-    </MuiThemeProvider>
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <ScrollToTop>
+            <div className={classes.app}>
+              <React.Fragment>
+                <Route exact path="/" component={withTracker(Home)} />
+                <Route path="/about" component={withTracker(About)} />
+                <Route path="/projects" component={withTracker(Projects)} />
+                <Route path="/privacy" component={withTracker(Privacy)} />
+              </React.Fragment>
+              <Footer />
+            </div>
+          </ScrollToTop>
+        </Router>
+      </MuiThemeProvider>
+    </Provider>
   </React.Fragment>
 );
 

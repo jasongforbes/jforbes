@@ -12,6 +12,19 @@ const styles = theme => ({
   headerImage: {
     display: 'block',
     width: '100%',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    height: '0',
+    paddingTop: '100%',
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '40.555555555%',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '250px',
+      backgroundSize: 'cover',
+      paddingTop: '50%',
+      backgroundPosition: '50% 20%',
+    },
   },
   headerTextBackground: {
     position: 'absolute',
@@ -21,9 +34,16 @@ const styles = theme => ({
     zIndex: 2,
   },
   headerText: {
-    textAlign: 'right',
-    margin: '15px 0px 0px',
+    textAlign: 'left',
+    margin: '15px 0px',
     fontSize: '52px',
+    maxWidth: '300px',
+    [theme.breakpoints.up('sm')]: {
+      textAlign: 'right',
+      margin: '15px 0px 0px',
+      fontSize: '52px',
+      maxWidth: 'none',
+    },
     [theme.breakpoints.up('md')]: {
       fontSize: '58px',
     },
@@ -39,7 +59,11 @@ const styles = theme => ({
 
 const HeaderImage = ({ children, classes, headshot }) => (
   <div className={classes.header}>
-    <img className={classes.headerImage} src={headshot} alt="Headshot" />
+    <div
+      className={classes.headerImage}
+      style={{ backgroundImage: `url(${headshot})` }}
+      alt="Headshot"
+    />
     <div className={[classes.headerTextBackground, classes.HeaderText].join(' ')}>
       <Grid container>
         <Grid item xs={1} lg={3} />
