@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './Footer';
 import Page from './Page';
+import PathNotFound from './pathNotFound';
 import Privacy from './Privacy';
 import ScrollToTop from './ScrollToTop';
 import rootReducer from './reducers';
@@ -131,6 +132,7 @@ const App = ({ classes }) => (
                 <Switch>
                   <Route path="/(about|projects)?" exact component={withTracker(Page)} />
                   <Route path="/privacy" component={withTracker(Privacy)} />
+                  <Route component={withTracker(PathNotFound)} />
                 </Switch>
               </React.Fragment>
               <Footer />
