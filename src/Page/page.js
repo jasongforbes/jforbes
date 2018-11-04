@@ -8,7 +8,7 @@ import Sidebar from '../Sidebar';
 const Page = ({ children }) => (
   <Grid container spacing={0}>
     <Hidden mdDown>
-      <Grid item lg={4} xl={3}>
+      <Grid item lg={3}>
         <Sidebar />
       </Grid>
     </Hidden>
@@ -18,7 +18,7 @@ const Page = ({ children }) => (
       </Grid>
     </Hidden>
     <Grid item lg={1} />
-    <Grid item lg={6} xl={8}>
+    <Grid item lg={8}>
       {children}
     </Grid>
     <Grid item lg={1} />
