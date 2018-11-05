@@ -26,13 +26,13 @@ const Page = () => (
         <MobileHeader />
       </Grid>
     </Hidden>
-    <Grid item lg={1} />
-    <Grid item lg={8}>
+    <Grid item xs={1} />
+    <Grid item xs={8}>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/projects" component={Projects} />
     </Grid>
-    <Grid item lg={1} />
+    <Grid item xs={1} />
   </Grid>
 );
 
