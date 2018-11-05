@@ -11,12 +11,12 @@ import Sidebar from '../Sidebar';
 
 const Page = () => (
   <Grid container spacing={0}>
-    <Hidden mdDown>
-      <Grid item lg={3}>
+    <Hidden smDown>
+      <Grid item md={3}>
         <Sidebar />
       </Grid>
     </Hidden>
-    <Hidden only={['xs', 'lg', 'xl']}>
+    <Hidden only={['xs', 'md', 'lg', 'xl']}>
       <Grid item sm={12}>
         <Header />
       </Grid>

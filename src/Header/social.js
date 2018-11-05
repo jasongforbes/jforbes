@@ -11,7 +11,7 @@ const styles = theme => ({
     margin: '15px -14.25px',
     justifyContent: 'space-between',
     maxWidth: '165px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       padding: '0px',
       justifyContent: 'flex-end',
       maxWidth: 'none',
@@ -27,17 +27,17 @@ const styles = theme => ({
 const Social = ({ classes, email, instagram, twitter, width }) => (
   <div className={classes.social}>
     <a href="https://twitter.com/JasonForbes" className={classes.socialImage}>
-      <SvgIcon color={isWidthDown('md', width) ? 'secondary' : 'primary'} fontSize="large">
+      <SvgIcon color={isWidthDown('sm', width) ? 'secondary' : 'primary'} fontSize="large">
         {twitter}
       </SvgIcon>
     </a>
     <a href="https://www.instagram.com/jasongforbes" className={classes.socialImage}>
-      <SvgIcon color={isWidthDown('md', width) ? 'secondary' : 'primary'} fontSize="large">
+      <SvgIcon color={isWidthDown('sm', width) ? 'secondary' : 'primary'} fontSize="large">
         {instagram}
       </SvgIcon>
     </a>
     <a href="mailto:jason@jforbes.io" className={classes.socialImage}>
-      <SvgIcon color={isWidthDown('md', width) ? 'secondary' : 'primary'} fontSize="large">
+      <SvgIcon color={isWidthDown('sm', width) ? 'secondary' : 'primary'} fontSize="large">
         {email}
       </SvgIcon>
     </a>
