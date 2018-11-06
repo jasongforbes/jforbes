@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import { Route } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 import About from '../About';
 import Header from '../Header';
 import Home from '../Home';
@@ -9,7 +11,16 @@ import MobileHeader from '../MobileHeader';
 import Projects from '../Projects';
 import Sidebar from '../Sidebar';
 
-const Page = () => (
+const styles = theme => ({
+  content: {
+    margin: '80px 0px',
+    [theme.breakpoints.down('sm')]: {
+      margin: '40px 0px',
+    },
+  },
+});
+
+const Page = ({ classes }) => (
   <Grid container spacing={0}>
     <Hidden smDown>
       <Grid item md={3}>
@@ -30,9 +41,11 @@ const Page = () => (
       <Grid item xs={1} xl={2} />
     </Hidden>
     <Grid item xs={12} md={7} xl={5}>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/projects" component={Projects} />
+      <div className={classes.content}>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/projects" component={Projects} />
+      </div>
     </Grid>
     <Hidden smDown>
       <Grid item xs={1} xl={2} />
@@ -40,4 +53,8 @@ const Page = () => (
   </Grid>
 );
 
-export default Page;
+Page.propTypes = {
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+};
+
+export default withStyles(styles)(Page);
