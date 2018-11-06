@@ -34,6 +34,7 @@ const theme = createMuiTheme({
       fontSize: '1.5em',
       lineHeight: '1em',
       marginBottom: '1em',
+      textTransform: 'uppercase',
     },
     h4: {
       fontFamily: 'Montserrat',
