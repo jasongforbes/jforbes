@@ -14,7 +14,7 @@ const styles = theme => ({
   },
   link: {
     ...theme.typography.button,
-    color: theme.palette.primary.main,
+    color: theme.palette.primary.light,
     textAlign: 'left',
     lineHeight: '2em',
   },
@@ -28,6 +28,14 @@ const Projects = ({ classes }) => (
       </Hidden>
       <Grid item xs={10} md={12}>
         <Typography variant="h3">Projects</Typography>
+        <div>
+          <a href="https://github.com/jasongforbes/jforbes.io" className={classes.link}>
+            jforbes.io
+          </a>
+          <Typography variant="body1">
+            A personal blog and responsive landing page written in React.
+          </Typography>
+        </div>
         <div>
           <a href="https://github.com/jasongforbes/dorian-js" className={classes.link}>
             Dorian.js
