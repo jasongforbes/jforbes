@@ -54,6 +54,9 @@ const About = ({ classes }) => (
         <Typography variant="body1">More recently, I have focused my studies in:</Typography>
         <ul>
           <li>
+            <Typography className={classes.listItem}>full-stack development</Typography>
+          </li>
+          <li>
             <Typography className={classes.listItem}>machine learning</Typography>
           </li>
           <li>
