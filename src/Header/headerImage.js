@@ -17,7 +17,10 @@ const styles = theme => ({
     height: '0',
     paddingTop: '100%',
     [theme.breakpoints.down('md')]: {
-      paddingTop: '40.555555555%',
+      height: '250px',
+      backgroundSize: 'cover',
+      paddingTop: '20%',
+      backgroundPosition: '50% 20%',
     },
     [theme.breakpoints.down('xs')]: {
       height: '250px',

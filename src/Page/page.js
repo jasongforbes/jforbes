@@ -11,12 +11,12 @@ import Sidebar from '../Sidebar';
 
 const Page = () => (
   <Grid container spacing={0}>
-    <Hidden mdDown>
-      <Grid item lg={3}>
+    <Hidden smDown>
+      <Grid item md={3}>
         <Sidebar />
       </Grid>
     </Hidden>
-    <Hidden only={['xs', 'lg', 'xl']}>
+    <Hidden only={['xs', 'md', 'lg', 'xl']}>
       <Grid item sm={12}>
         <Header />
       </Grid>
@@ -26,13 +26,13 @@ const Page = () => (
         <MobileHeader />
       </Grid>
     </Hidden>
-    <Grid item lg={1} />
-    <Grid item lg={8}>
+    <Grid item xs={1} />
+    <Grid item xs={8}>
       <Route exact path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/projects" component={Projects} />
     </Grid>
-    <Grid item lg={1} />
+    <Grid item xs={1} />
   </Grid>
 );
 

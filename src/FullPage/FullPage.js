@@ -28,8 +28,8 @@ const styles = () => ({
 
 const FullPage = ({ children, classes }) => (
   <Grid container spacing={24} className={classes.page}>
-    <Grid item xs={2} />
-    <Grid item xs={8} className={classes.home}>
+    <Grid item xs={1} md={2} lg={3} />
+    <Grid item xs={10} md={8} lg={6} className={classes.home}>
       <Link to="/" className={classes.link}>
         <div className={classes.linkGroup}>
           <SvgIcon color="primary" className={classes.icon}>
@@ -39,12 +39,12 @@ const FullPage = ({ children, classes }) => (
         </div>
       </Link>
     </Grid>
-    <Grid item xs={2} />
-    <Grid item xs={2} />
-    <Grid item xs={8}>
+    <Grid item xs={1} md={2} lg={3} />
+    <Grid item xs={1} md={2} lg={3} />
+    <Grid item xs={10} md={8} lg={6}>
       {children}
     </Grid>
-    <Grid item xs={2} />
+    <Grid item xs={1} md={2} lg={3} />
   </Grid>
 );
 
