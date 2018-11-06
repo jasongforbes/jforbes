@@ -16,7 +16,7 @@ const styles = theme => ({
     backgroundRepeat: 'no-repeat',
     height: '0',
     paddingTop: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       height: '250px',
       backgroundSize: 'cover',
       paddingTop: '20%',
@@ -48,11 +48,12 @@ const styles = theme => ({
       maxWidth: 'none',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '58px',
-    },
-    [theme.breakpoints.up('lg')]: {
+      fontSize: '42px',
       textAlign: 'left',
       margin: '15px 0px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '58px',
     },
     [theme.breakpoints.up('xl')]: {
       fontSize: '72px',
@@ -69,18 +70,18 @@ const HeaderImage = ({ children, classes, headshot }) => (
     />
     <div className={[classes.headerTextBackground, classes.HeaderText].join(' ')}>
       <Grid container>
-        <Grid item xs={1} lg={3} />
-        <Grid item xs={10} lg={6}>
+        <Grid item xs={1} md={3} />
+        <Grid item xs={10} md={6}>
           <Typography variant="h1" className={classes.headerText}>
             Jason Forbes
           </Typography>
         </Grid>
-        <Grid item xs={1} lg={3} />
-        <Grid item xs={1} lg={3} />
-        <Grid item xs={10} lg={6}>
+        <Grid item xs={1} md={3} />
+        <Grid item xs={1} md={3} />
+        <Grid item xs={10} md={6}>
           {children}
         </Grid>
-        <Grid item xs={1} lg={3} />
+        <Grid item xs={1} md={3} />
       </Grid>
     </div>
   </div>
