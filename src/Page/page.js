@@ -6,8 +6,8 @@ import { Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import About from '../About';
 import Header from '../Header';
-import Home from '../Home';
 import MobileHeader from '../MobileHeader';
+import Posts from '../Posts';
 import Projects from '../Projects';
 import Sidebar from '../Sidebar';
 
@@ -42,7 +42,7 @@ const Page = ({ classes }) => (
     </Hidden>
     <Grid item xs={12} md={7} xl={5}>
       <div className={classes.content}>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Posts} />
         <Route path="/about" component={About} />
         <Route path="/projects" component={Projects} />
       </div>
