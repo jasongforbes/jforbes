@@ -30,9 +30,10 @@ const Page = () => (
       <Grid item xs={1} xl={2} />
     </Hidden>
     <Grid item xs={12} md={7} xl={5}>
-        <Route exact path="/" component={Posts} />
-        <Route path="/about" component={About} />
-        <Route path="/projects" component={Projects} />
+      <Route exact path="/" component={Posts} />
+      <Route path="/about" component={About} />
+      <Route path="/projects" component={Projects} />
+      <Route path="/page/:id" component={Posts} />
     </Grid>
     <Hidden smDown>
       <Grid item xs={1} xl={2} />

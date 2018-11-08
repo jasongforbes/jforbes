@@ -131,7 +131,11 @@ const App = ({ classes }) => (
             <div className={classes.app}>
               <React.Fragment>
                 <Switch>
-                  <Route path="/(about|projects)?" exact component={withTracker(Page)} />
+                  <Route
+                    path="/(about|projects|page/[0-9]+)?"
+                    exact
+                    component={withTracker(Page)}
+                  />
                   <Route path="/privacy" component={withTracker(Privacy)} />
                   <Route component={withTracker(PathNotFound)} />
                 </Switch>
