@@ -39,7 +39,7 @@ const Header = ({ classes }) => (
       <Grid item xs={10}>
         <div className={classes.links}>
           <NavLink className={classes.link} to="/" exact>
-            Writing
+            Writings
           </NavLink>
           <NavLink className={classes.link} to="/about">
             About

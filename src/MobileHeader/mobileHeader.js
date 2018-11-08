@@ -54,7 +54,7 @@ const MobileHeader = ({ classes, onToggleMenu, showMenu }) => (
         <List>
           <Divider />
           <NavLink className={classes.link} to="/" exact onClick={onToggleMenu}>
-            <ListItem className={classes.listItem}>Writing</ListItem>
+            <ListItem className={classes.listItem}>Writings</ListItem>
           </NavLink>
           <Divider />
           <NavLink className={classes.link} to="/about" onClick={onToggleMenu}>
