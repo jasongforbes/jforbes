@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './Footer';
+import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
-import Privacy from './Privacy';
 import ScrollToTop from './ScrollToTop';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
-
+import postList from './Posts/posts.json';
 import './App.css';
+
+const Privacy = withTracker(lazy(() => import('./Privacy')));
 
 require('typeface-abril-fatface');
 require('typeface-inconsolata');
@@ -121,6 +124,12 @@ const styles = () => ({
   },
 });
 
+const fallback = (
+  <FullPage>
+    <Typography variant="body1">Loading...</Typography>
+  </FullPage>
+);
+
 const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
@@ -130,15 +139,26 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <Switch>
-                  <Route
-                    path="/(about|projects|page/[0-9]+)?"
-                    exact
-                    component={withTracker(Page)}
-                  />
-                  <Route path="/privacy" component={withTracker(Privacy)} />
-                  <Route component={withTracker(PathNotFound)} />
-                </Switch>
+                <Suspense fallback={fallback}>
+                  <Switch>
+                    <Route
+                      path="/(about|projects|page/[0-9]+)?"
+                      exact
+                      component={withTracker(Page)}
+                    />
+                    <Route path="/privacy" component={Privacy} />
+                    {postList.map(post => (
+                      <Route
+                        path={post.slug}
+                        key={post.slug}
+                        component={withTracker(
+                          withFullPage(lazy(() => import(`./Posts/${post.path}`)))
+                        )}
+                      />
+                    ))}
+                    <Route component={withTracker(PathNotFound)} />
+                  </Switch>
+                </Suspense>
               </React.Fragment>
               <Footer />
             </div>
