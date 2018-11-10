@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -122,13 +123,14 @@ const styles = () => ({
     minHeight: '100vh',
     justifyContent: 'space-between',
   },
+  loading: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    height: '200px',
+  },
 });
-
-const fallback = (
-  <FullPage>
-    <Typography variant="body1">Loading...</Typography>
-  </FullPage>
-);
 
 const App = ({ classes }) => (
   <React.Fragment>
@@ -139,7 +141,16 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <Suspense fallback={fallback}>
+                <Suspense
+                  fallback={
+                    <FullPage>
+                      <div className={classes.loading}>
+                        <CircularProgress />
+                        <Typography variant="body1">LOADING</Typography>
+                      </div>
+                    </FullPage>
+                  }
+                >
                   <Switch>
                     <Route
                       path="/(about|projects|page/[0-9]+)?"
