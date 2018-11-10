@@ -30,7 +30,7 @@ const Sidebar = ({ classes }) => (
       <Grid item xs={3} />
       <Grid item xs={9} className={classes.row}>
         <NavLink className={classes.link} to="/" exact>
-          Writing
+          Writings
         </NavLink>
       </Grid>
       <Grid item xs={3} />

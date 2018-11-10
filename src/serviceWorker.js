@@ -11,17 +11,17 @@
 // opt-in, read http://bit.ly/CRA-PWA.
 
 const isLocalhost = Boolean(
-  window.location.hostname === 'localhost'
+  window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
-    || window.location.hostname === '[::1]'
+    window.location.hostname === '[::1]' ||
     // 127.0.0.1/8 is considered localhost for IPv4.
-    || window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/),
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
 function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
-    .then((registration) => {
+    .then(registration => {
       const reg = registration;
       reg.onupdatefound = () => {
         const installingWorker = registration.installing;
@@ -46,7 +46,7 @@ function registerValidSW(swUrl, config) {
         };
       };
     })
-    .catch((error) => {
+    .catch(error => {
       console.error('Error during service worker registration:', error); // eslint-disable-line
     });
 }
@@ -54,14 +54,14 @@ function registerValidSW(swUrl, config) {
 function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
-    .then((response) => {
+    .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
-        response.status === 404
-        || response.headers.get('content-type').indexOf('javascript') === -1
+        response.status === 404 ||
+        response.headers.get('content-type').indexOf('javascript') === -1
       ) {
         // No service worker found. Probably a different app. Reload the page.
-        navigator.serviceWorker.ready.then((registration) => {
+        navigator.serviceWorker.ready.then(registration => {
           registration.unregister().then(() => {
             window.location.reload();
           });
@@ -103,7 +103,7 @@ export function register(config) {
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then((registration) => {
+    navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
     });
   }

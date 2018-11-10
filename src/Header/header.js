@@ -11,7 +11,7 @@ import Social from './social';
 const styles = theme => ({
   links: {
     display: 'flex',
-    margin: '40px 0px',
+    margin: '40px 0px 0px',
     width: '100%',
     maxWidth: '300px',
     [theme.breakpoints.up('md')]: {
@@ -39,7 +39,7 @@ const Header = ({ classes }) => (
       <Grid item xs={10}>
         <div className={classes.links}>
           <NavLink className={classes.link} to="/" exact>
-            Writing
+            Writings
           </NavLink>
           <NavLink className={classes.link} to="/about">
             About

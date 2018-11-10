@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './Footer';
+import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
-import Privacy from './Privacy';
 import ScrollToTop from './ScrollToTop';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
-
+import postList from './Posts/posts.json';
 import './App.css';
+
+const Privacy = withTracker(lazy(() => import('./Privacy')));
 
 require('typeface-abril-fatface');
 require('typeface-inconsolata');
@@ -119,6 +123,13 @@ const styles = () => ({
     minHeight: '100vh',
     justifyContent: 'space-between',
   },
+  loading: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    height: '200px',
+  },
 });
 
 const App = ({ classes }) => (
@@ -130,11 +141,35 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <Switch>
-                  <Route path="/(about|projects)?" exact component={withTracker(Page)} />
-                  <Route path="/privacy" component={withTracker(Privacy)} />
-                  <Route component={withTracker(PathNotFound)} />
-                </Switch>
+                <Suspense
+                  fallback={
+                    <FullPage>
+                      <div className={classes.loading}>
+                        <CircularProgress />
+                        <Typography variant="body1">LOADING</Typography>
+                      </div>
+                    </FullPage>
+                  }
+                >
+                  <Switch>
+                    <Route
+                      path="/(about|projects|page/[0-9]+)?"
+                      exact
+                      component={withTracker(Page)}
+                    />
+                    <Route path="/privacy" component={Privacy} />
+                    {postList.map(post => (
+                      <Route
+                        path={post.slug}
+                        key={post.slug}
+                        component={withTracker(
+                          withFullPage(lazy(() => import(`./Posts/${post.path}`)))
+                        )}
+                      />
+                    ))}
+                    <Route component={withTracker(PathNotFound)} />
+                  </Switch>
+                </Suspense>
               </React.Fragment>
               <Footer />
             </div>
