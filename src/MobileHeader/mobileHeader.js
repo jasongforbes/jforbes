@@ -11,17 +11,24 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import headshot from '../images/headshot.jpg';
 import { HeaderImage } from '../Header';
 import { Cancel, Menu } from '../icons';
+import Subscribe from '../Subscribe';
 
 const styles = theme => ({
   button: {
     padding: '12px 32px',
     alignSelf: 'flex-end',
   },
+  callToAction: {
+    paddingTop: '8px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   link: {
     ...theme.typography.button,
-    color: theme.palette.primary.light,
-    '&.active': {
-      color: theme.palette.primary.main,
+    color: theme.palette.primary.main,
+    '&.active li': {
+      backgroundColor: '#EBEBEB',
     },
   },
   listItem: {
@@ -46,11 +53,14 @@ const MobileHeader = ({ classes, onToggleMenu, showMenu }) => (
     </div>
     <Drawer anchor="top" open={showMenu} onClose={onToggleMenu}>
       <div className={classes.menu}>
-        <Button onClick={onToggleMenu} className={classes.button} aria-label="Close menu">
-          <SvgIcon color="primary">
-            <Cancel />
-          </SvgIcon>
-        </Button>
+        <div className={classes.callToAction}>
+          <Subscribe />
+          <Button onClick={onToggleMenu} className={classes.button} aria-label="Close menu">
+            <SvgIcon color="primary">
+              <Cancel />
+            </SvgIcon>
+          </Button>
+        </div>
         <List>
           <Divider />
           <NavLink className={classes.link} to="/" exact onClick={onToggleMenu}>

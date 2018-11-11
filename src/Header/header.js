@@ -7,11 +7,16 @@ import headshot from '../images/headshot_wide.jpg';
 import { TwitterInner, InstagramInner, EmailInner } from '../icons';
 import HeaderImage from './headerImage';
 import Social from './social';
+import Subscribe from '../Subscribe';
 
 const styles = theme => ({
+  callToAction: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '40px 0px 0px',
+  },
   links: {
     display: 'flex',
-    margin: '40px 0px 0px',
     width: '100%',
     maxWidth: '300px',
     [theme.breakpoints.up('md')]: {
@@ -37,16 +42,19 @@ const Header = ({ classes }) => (
     <Grid container>
       <Grid item xs={1} />
       <Grid item xs={10}>
-        <div className={classes.links}>
-          <NavLink className={classes.link} to="/" exact>
-            Writings
-          </NavLink>
-          <NavLink className={classes.link} to="/about">
-            About
-          </NavLink>
-          <NavLink className={classes.link} to="/projects">
-            Projects
-          </NavLink>
+        <div className={classes.callToAction}>
+          <div className={classes.links}>
+            <NavLink className={classes.link} to="/" exact>
+              Writings
+            </NavLink>
+            <NavLink className={classes.link} to="/about">
+              About
+            </NavLink>
+            <NavLink className={classes.link} to="/projects">
+              Projects
+            </NavLink>
+          </div>
+          <Subscribe contained />
         </div>
       </Grid>
       <Grid item xs={1} />
