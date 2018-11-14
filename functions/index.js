@@ -31,12 +31,19 @@ exports.subscribe = functions.https.onCall(data => {
         },
       },
       (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-          resolve({ subscribed: true });
-        } else if (response.statusCode === 400 && response.body.title === 'Member Exists') {
-          resolve({ subscribed: true });
+        if (!error) {
+          if (
+            response.statusCode === 200 ||
+            (response.statusCode === 400 && response.body.title === 'Member Exists')
+          ) {
+            resolve({ subscribed: true });
+          }
         }
-        reject(Error(response.body.detail));
+        if (response) {
+          reject(Error(response.body.detail));
+        } else {
+          reject(Error(error));
+        }
       }
     );
   });
