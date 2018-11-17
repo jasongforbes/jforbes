@@ -6,8 +6,16 @@ import { withStyles } from '@material-ui/core/styles';
 import headshot from '../images/headshot.jpg';
 import { TwitterRound, InstagramRound, EmailRound } from '../icons';
 import { HeaderImage, Social } from '../Header';
+import Subscribe from '../Subscribe';
 
 const styles = theme => ({
+  button: {
+    width: '100%',
+  },
+  callToAction: {
+    maxWidth: '165px',
+    padding: '100px 0px 128px 0px',
+  },
   link: {
     ...theme.typography.button,
     color: theme.palette.primary.light,
@@ -47,7 +55,14 @@ const Sidebar = ({ classes }) => (
       </Grid>
       <Grid item xs={3} />
       <Grid item xs={9}>
-        <Social twitter={<TwitterRound />} instagram={<InstagramRound />} email={<EmailRound />} />
+        <div className={classes.callToAction}>
+          <Subscribe contained buttonClassName={classes.button} />
+          <Social
+            twitter={<TwitterRound />}
+            instagram={<InstagramRound />}
+            email={<EmailRound />}
+          />
+        </div>
       </Grid>
     </Grid>
   </React.Fragment>

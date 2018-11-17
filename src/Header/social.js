@@ -7,10 +7,8 @@ import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 const styles = theme => ({
   social: {
     display: 'flex',
-    padding: '100px 0px 128px 0px',
     margin: '15px -14.25px',
     justifyContent: 'space-between',
-    maxWidth: '165px',
     [theme.breakpoints.down('sm')]: {
       padding: '0px',
       justifyContent: 'flex-end',
