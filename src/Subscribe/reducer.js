@@ -1,6 +1,7 @@
 const initialState = {
   showSubscribe: false,
   hasError: false,
+  loading: false,
   error: '',
 };
 
@@ -11,6 +12,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         showSubscribe: false,
+        loading: false,
       };
     }
     case 'OPEN_SUBSCRIBE': {
@@ -22,6 +24,7 @@ export default function(state = initialState, action) {
     case 'SUBMIT_EMAIL': {
       return {
         ...state,
+        loading: true,
         hasError: false,
         error: '',
       };
@@ -32,6 +35,7 @@ export default function(state = initialState, action) {
         ...state,
         hasError: true,
         error: action.error,
+        loading: false,
       };
     }
     default:

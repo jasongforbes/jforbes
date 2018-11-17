@@ -62,6 +62,7 @@ const Subscribe = ({
   contained,
   fullScreen,
   hasError,
+  loading,
   onClose,
   onSubmit,
   onSubscribe,
@@ -89,6 +90,7 @@ const Subscribe = ({
         keepMounted
         onClose={onClose}
         fullScreen={fullScreen}
+        disableBackdropClick
       >
         <DialogContent className={classes.content}>
           <div>
@@ -98,7 +100,7 @@ const Subscribe = ({
               opt out at any time.
             </Typography>
           </div>
-          <FormControl className={classes.form}>
+          <FormControl className={classes.form} disabled={loading}>
             <InputLabel shrink>
               <Typography variant="h4" className={classes.formLabel}>
                 Email Address
@@ -106,7 +108,9 @@ const Subscribe = ({
             </InputLabel>
             <input
               className={hasError ? `${classes.input} ${classes.inputError}` : classes.input}
+              disabled={loading}
               ref={emailInput}
+              readOnly={loading}
               type="text"
               autoCapitalize="off"
               autoCorrect="off"
@@ -119,10 +123,14 @@ const Subscribe = ({
           <div /> {/* Empty div for centering form on mobile */}
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose} color="primary">
+          <Button onClick={onClose} color="primary" disabled={loading}>
             Cancel
           </Button>
-          <Button onClick={() => onSubmit(emailInput.current.value, form.current)} color="primary">
+          <Button
+            onClick={() => onSubmit(emailInput.current.value, form.current)}
+            color="primary"
+            disabled={loading}
+          >
             Subscribe
           </Button>
         </DialogActions>
@@ -137,6 +145,7 @@ Subscribe.propTypes = {
   contained: PropTypes.bool,
   fullScreen: PropTypes.bool,
   hasError: PropTypes.bool,
+  loading: PropTypes.bool,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
   onSubscribe: PropTypes.func,
@@ -148,6 +157,7 @@ Subscribe.defaultProps = {
   contained: false,
   fullScreen: false,
   hasError: false,
+  loading: false,
   onClose: () => {},
   onSubmit: () => {},
   onSubscribe: () => {},
