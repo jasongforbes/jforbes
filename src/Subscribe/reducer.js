@@ -1,5 +1,6 @@
 const initialState = {
   showSubscribe: false,
+  showSuccess: false,
   hasError: false,
   loading: false,
   error: '',
@@ -8,10 +9,16 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case 'EMAIL_SUCCEED':
+      return {
+        ...state,
+        showSuccess: true,
+        loading: false,
+      };
     case 'CLOSE_SUBSCRIBE': {
       return {
         ...state,
         showSubscribe: false,
+        showSuccess: false,
         loading: false,
       };
     }

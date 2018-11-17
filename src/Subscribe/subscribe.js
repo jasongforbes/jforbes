@@ -11,8 +11,13 @@ import Slide from '@material-ui/core/Slide';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
+import celebrate from '../images/celebrate.svg';
 
 const styles = theme => ({
+  celebrateIcon: {
+    alignSelf: 'center',
+    height: '100%',
+  },
   content: {
     display: 'flex',
     flexDirection: 'column',
@@ -50,6 +55,10 @@ const styles = theme => ({
   formLabel: {
     fontWeight: 'bold',
   },
+  thankYou: {
+    width: '100%',
+    maxWidth: '600px',
+  },
 });
 
 function Transition(props) {
@@ -67,6 +76,7 @@ const Subscribe = ({
   onSubmit,
   onSubscribe,
   showSubscribe,
+  showSuccess,
 }) => {
   const form = React.createRef();
   const emailInput = React.createRef();
@@ -135,6 +145,33 @@ const Subscribe = ({
           </Button>
         </DialogActions>
       </Dialog>
+      <Dialog
+        open={showSuccess}
+        keepMounted
+        onClose={onClose}
+        TransitionComponent={Transition}
+        fullScreen={fullScreen}
+        disableBackdropClick
+        fullWidth
+        BackdropProps={{ invisible: true }}
+        PaperProps={{ elevation: 0 }}
+      >
+        <DialogContent className={classes.content}>
+          <div>
+            <Typography variant="h4">Thank You!</Typography>
+            <Typography variant="caption">You have successfully subscribed.</Typography>
+          </div>
+          <div className={classes.celebrateIcon}>
+            <img src={celebrate} alt="Celebration icon" width={100} />
+          </div>
+          <div /> {/* Empty div for centering */}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose} color="primary" disabled={loading}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </React.Fragment>
   );
 };
@@ -150,6 +187,7 @@ Subscribe.propTypes = {
   onSubmit: PropTypes.func,
   onSubscribe: PropTypes.func,
   showSubscribe: PropTypes.bool,
+  showSuccess: PropTypes.bool,
 };
 
 Subscribe.defaultProps = {
@@ -162,6 +200,7 @@ Subscribe.defaultProps = {
   onSubmit: () => {},
   onSubscribe: () => {},
   showSubscribe: false,
+  showSuccess: false,
 };
 
 export default withMobileDialog({ breakpoint: 'xs' })(withStyles(styles)(Subscribe));
