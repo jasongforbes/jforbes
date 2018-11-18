@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
@@ -27,6 +28,13 @@ const styles = theme => ({
 
 const About = ({ classes }) => (
   <div className={classes.content}>
+    <Helmet>
+      <title>About Jason Forbes</title>
+      <meta
+        name="description"
+        content="Contact information and biographical information. Feel free to reach me at jason@jforbes.io or on Twitter."
+      />
+    </Helmet>
     <Grid container spacing={0}>
       <Hidden mdUp>
         <Grid item xs={1} />

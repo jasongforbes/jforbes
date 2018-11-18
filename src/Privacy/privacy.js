@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,6 +11,10 @@ const styles = theme => ({
 
 const Privacy = ({ classes }) => (
   <FullPage>
+    <Helmet>
+      <title>Privacy - Jason Forbes</title>
+      <meta name="description" content="The privacy policy for jforbes.io." />
+    </Helmet>
     <div>
       <Typography variant="h3">Privacy Policy</Typography>
       <Typography variant="subtitle1">Effective date: October 22, 2018</Typography>
