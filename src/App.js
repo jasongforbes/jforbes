@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Footer from './Footer';
 import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
@@ -130,6 +131,17 @@ const styles = () => ({
 const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
+    <Helmet>
+      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="preload" as="font" />
+      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="preload" as="font" />
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="preload" as="font" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
+      <title>Jason Forbes - Full-Stack Software Engineer and Numbers Guy</title>
+      <meta
+        name="description"
+        content="Landing page and personal blog for Jason Forbes. Blog posts typically focus around optimization, machine-learning, and product development."
+      />
+    </Helmet>
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
         <Router>
