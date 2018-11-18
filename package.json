@@ -14,10 +14,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "typeface-abril-fatface": "^0.0.54",
-    "typeface-inconsolata": "^0.0.54",
-    "typeface-montserrat": "^0.0.54"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

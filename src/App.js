@@ -20,21 +20,17 @@ import './App.css';
 
 const Privacy = withTracker(lazy(() => import('./Privacy')));
 
-require('typeface-abril-fatface');
-require('typeface-inconsolata');
-require('typeface-montserrat');
-
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     h1: {
-      fontFamily: 'Abril Fatface',
+      fontFamily: '"Abril Fatface", cursive',
       color: 'white',
       fontSize: '72px',
       textTransform: 'uppercase',
     },
     h3: {
-      fontFamily: 'Inconsolata',
+      fontFamily: 'Inconsolata, monospace',
       color: 'rgba(8, 20, 29, 1.0)',
       fontSize: '1.5em',
       lineHeight: '1em',
@@ -42,42 +38,42 @@ const theme = createMuiTheme({
       textTransform: 'uppercase',
     },
     h4: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: 'rgba(8, 20, 29, 1.0)',
       fontSize: '1.3125em',
       lineHeight: '1.142857142857143em',
       marginBottom: '1.142857142857143em',
     },
     h5: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: 'rgba(8, 20, 29, 1.0)',
       fontSize: '1.125em',
       lineHeight: '1.333333333333333em',
       marginBottom: '0.6666666666666667em',
     },
     h6: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: 'rgba(8, 20, 29, 1.0)',
       fontSize: '1em',
       lineHeight: '1.5em',
       marginBottom: '1.5em',
     },
     subtitle1: {
-      fontFamily: 'Inconsolata',
+      fontFamily: 'Inconsolata, monospace',
       color: 'rgba(8, 20, 29, 0.6)',
       fontSize: '0.75em',
       marginTop: '-1.5em',
       marginBottom: '1.5em',
     },
     body1: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: '#6B6B6B',
       fontSize: '1em',
       lineHeight: '1.5em',
       marginBottom: '1.5em',
     },
     button: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: 'rgba(9, 51, 79, 1.0)',
       fontSize: '1em',
       lineHeight: '1em',
@@ -88,11 +84,11 @@ const theme = createMuiTheme({
       textDecoration: 'none',
     },
     caption: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       fontSize: '0.75em',
     },
     list: {
-      fontFamily: 'Montserrat',
+      fontFamily: 'Montserrat, sans-serif',
       color: '#6B6B6B',
       fontSize: '1em',
       lineHeight: '1.5em',
