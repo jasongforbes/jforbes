@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import Button from './button';
 import Subscribe from './subscribe';
+import Success from './success';
 import reducer from './reducer';
 import firebase from '../firebase';
 
@@ -40,9 +42,19 @@ const mapDispatchToProps = dispatch => ({
     }),
 });
 
-export { reducer };
+const SubscribeButton = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Button);
 
-export default connect(
+const SubscribeDialog = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Subscribe);
+
+const SuccessDialog = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Success);
+
+export { reducer, SubscribeButton, SubscribeDialog, SuccessDialog };

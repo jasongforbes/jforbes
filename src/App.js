@@ -14,6 +14,7 @@ import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
 import ScrollToTop from './ScrollToTop';
+import { SubscribeDialog, SuccessDialog } from './Subscribe';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
 import postList from './Posts/posts.json';
@@ -148,6 +149,8 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
+                <SubscribeDialog />
+                <SuccessDialog />
                 <Suspense
                   fallback={
                     <FullPage>

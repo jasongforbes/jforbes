@@ -7,7 +7,7 @@ import headshot from '../images/headshot_wide.jpg';
 import { TwitterInner, InstagramInner, EmailInner } from '../icons';
 import HeaderImage from './headerImage';
 import Social from './social';
-import Subscribe from '../Subscribe';
+import { SubscribeButton } from '../Subscribe';
 
 const styles = theme => ({
   callToAction: {
@@ -54,7 +54,7 @@ const Header = ({ classes }) => (
               Projects
             </NavLink>
           </div>
-          <Subscribe contained />
+          <SubscribeButton contained />
         </div>
       </Grid>
       <Grid item xs={1} />
