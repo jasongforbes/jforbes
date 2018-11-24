@@ -9,28 +9,38 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   button: {
-    marginTop: '16px',
     marginBottom: '8px',
     height: '56px',
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-    boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.2)',
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '16px',
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+      boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.2)',
+    },
   },
   error: {
     color: theme.palette.error.main,
   },
   input: {
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
     flexGrow: 1,
     borderWidth: 1,
   },
   inputWrapper: {
     display: 'flex',
+    [theme.breakpoints.down('xs')]: {
+      flexWrap: 'wrap',
+    },
   },
   border: {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-    '& fieldset': {
-      borderWidth: '1px ! important',
+    [theme.breakpoints.up('sm')]: {
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+      '& fieldset': {
+        borderWidth: '1px ! important',
+      },
     },
   },
 });
