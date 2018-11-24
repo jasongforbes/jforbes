@@ -9,11 +9,13 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { withCTA } from './CallToAction';
 import Footer from './Footer';
 import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
 import ScrollToTop from './ScrollToTop';
+import { SubscribeDialog, SuccessDialog } from './Subscribe';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
 import postList from './Posts/posts.json';
@@ -132,9 +134,9 @@ const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
     <Helmet>
-      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="preload" as="font" />
-      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="preload" as="font" />
-      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="preload" as="font" />
+      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
       <link rel="preconnect" href="https://www.google-analytics.com" />
       <title>Jason Forbes - Full-Stack Software Engineer and Numbers Guy</title>
       <meta
@@ -148,6 +150,8 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
+                <SubscribeDialog />
+                <SuccessDialog />
                 <Suspense
                   fallback={
                     <FullPage>
@@ -170,7 +174,7 @@ const App = ({ classes }) => (
                         path={post.slug}
                         key={post.slug}
                         component={withTracker(
-                          withFullPage(lazy(() => import(`./Posts/${post.path}`)))
+                          withFullPage(withCTA(lazy(() => import(`./Posts/${post.path}`))))
                         )}
                       />
                     ))}

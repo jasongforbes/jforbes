@@ -1,47 +1,40 @@
 const initialState = {
-  showSubscribe: false,
-  showSuccess: false,
-  showSuccessShadow: false,
+  emailAddress: '',
   hasError: false,
   loading: false,
-  error: '',
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case 'INITIALIZE_CTA':
+      return {
+        ...initialState,
+      };
+    case 'CTA_EMAIL_CHANGE':
+      return {
+        ...state,
+        emailAddress: action.emailAddress,
+      };
     case 'EMAIL_SUCCEED':
       return {
         ...state,
-        showSuccess: true,
-        showSuccessShadow: action.showSuccessShadow,
+        emailAddress: '',
         loading: false,
+        hasError: false,
       };
-    case 'CLOSE_SUBSCRIBE': {
-      return {
-        ...initialState,
-      };
-    }
-    case 'OPEN_SUBSCRIBE': {
-      return {
-        ...initialState,
-        showSubscribe: true,
-      };
-    }
     case 'SUBMIT_EMAIL': {
       return {
         ...state,
         loading: true,
         hasError: false,
-        error: '',
       };
     }
     case 'SUBMIT_ERROR':
     case 'INVALID_EMAIL': {
       return {
         ...state,
-        hasError: true,
-        error: action.error,
         loading: false,
+        hasError: true,
       };
     }
     default:

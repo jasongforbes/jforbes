@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import headshot from '../images/headshot.jpg';
 import { TwitterRound, InstagramRound, EmailRound } from '../icons';
 import { HeaderImage, Social } from '../Header';
-import Subscribe from '../Subscribe';
+import { SubscribeButton } from '../Subscribe';
 
 const styles = theme => ({
   button: {
@@ -56,7 +56,7 @@ const Sidebar = ({ classes }) => (
       <Grid item xs={3} />
       <Grid item xs={9}>
         <div className={classes.callToAction}>
-          <Subscribe contained buttonClassName={classes.button} />
+          <SubscribeButton contained buttonClassName={classes.button} />
           <Social
             twitter={<TwitterRound />}
             instagram={<InstagramRound />}

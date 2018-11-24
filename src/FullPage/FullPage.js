@@ -27,7 +27,7 @@ const styles = () => ({
 });
 
 const FullPage = ({ children, classes }) => (
-  <Grid container spacing={24} className={classes.page}>
+  <Grid container spacing={0} className={classes.page}>
     <Grid item xs={1} md={2} lg={3} />
     <Grid item xs={10} md={8} lg={6} className={classes.home}>
       <Link to="/" className={classes.link}>

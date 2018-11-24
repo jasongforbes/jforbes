@@ -7,17 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
-import Slide from '@material-ui/core/Slide';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import celebrate from '../images/celebrate.svg';
+import Transition from './slideTransition';
 
 const styles = theme => ({
-  celebrateIcon: {
-    alignSelf: 'center',
-    height: '100%',
-  },
   content: {
     display: 'flex',
     flexDirection: 'column',
@@ -55,152 +50,91 @@ const styles = theme => ({
   formLabel: {
     fontWeight: 'bold',
   },
-  thankYou: {
-    width: '100%',
-    maxWidth: '600px',
-  },
 });
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
-
-const Subscribe = ({
+const SubscribeDialog = ({
   classes,
-  buttonClassName,
-  contained,
   fullScreen,
   hasError,
   loading,
   onClose,
   onSubmit,
-  onSubscribe,
   showSubscribe,
-  showSuccess,
 }) => {
-  const form = React.createRef();
   const emailInput = React.createRef();
 
   return (
-    <React.Fragment>
-      <Button
-        className={buttonClassName}
-        onClick={onSubscribe}
-        variant={contained ? 'contained' : 'text'}
-        color={contained ? 'primary' : 'default'}
-        aria-label="subscribe"
-      >
-        <Typography variant="button" color={contained ? 'secondary' : 'primary'}>
-          Subscribe
-        </Typography>
-      </Button>
-      <Dialog
-        open={showSubscribe}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={onClose}
-        fullScreen={fullScreen}
-        disableBackdropClick
-      >
-        <DialogContent className={classes.content}>
-          <div>
-            <Typography variant="h4">Never Miss an Update</Typography>
-            <Typography variant="caption">
-              <strong>No spam, ever.</strong> We&#39;ll never share your email address and you can
-              opt out at any time.
+    <Dialog
+      open={showSubscribe}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={onClose}
+      fullScreen={fullScreen}
+      disableBackdropClick
+    >
+      <DialogContent className={classes.content}>
+        <div>
+          <Typography variant="h4">Never Miss an Update</Typography>
+          <Typography variant="caption">
+            <strong>No spam, ever.</strong> We&#39;ll never share your email address and you can opt
+            out at any time.
+          </Typography>
+        </div>
+        <FormControl className={classes.form} disabled={loading}>
+          <InputLabel shrink>
+            <Typography variant="h4" className={classes.formLabel}>
+              Email Address
             </Typography>
-          </div>
-          <FormControl className={classes.form} disabled={loading}>
-            <InputLabel shrink>
-              <Typography variant="h4" className={classes.formLabel}>
-                Email Address
-              </Typography>
-            </InputLabel>
-            <input
-              className={hasError ? `${classes.input} ${classes.inputError}` : classes.input}
-              disabled={loading}
-              ref={emailInput}
-              readOnly={loading}
-              type="text"
-              autoCapitalize="off"
-              autoCorrect="off"
-              size="25"
-            />
-            <FormHelperText className={classes.error}>
-              {hasError && 'Please enter a valid email address'}
-            </FormHelperText>
-          </FormControl>
-          <div /> {/* Empty div for centering form on mobile */}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={onClose} color="primary" disabled={loading}>
-            Cancel
-          </Button>
-          <Button
-            onClick={() => onSubmit(emailInput.current.value, form.current)}
-            color="primary"
+          </InputLabel>
+          <input
+            className={hasError ? `${classes.input} ${classes.inputError}` : classes.input}
             disabled={loading}
-          >
-            Subscribe
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={showSuccess}
-        keepMounted
-        onClose={onClose}
-        TransitionComponent={Transition}
-        fullScreen={fullScreen}
-        disableBackdropClick
-        fullWidth
-        BackdropProps={{ invisible: true }}
-        PaperProps={{ elevation: 0 }}
-      >
-        <DialogContent className={classes.content}>
-          <div>
-            <Typography variant="h4">Thank You!</Typography>
-            <Typography variant="caption">You have successfully subscribed.</Typography>
-          </div>
-          <div className={classes.celebrateIcon}>
-            <img src={celebrate} alt="Celebration icon" width={100} />
-          </div>
-          <div /> {/* Empty div for centering */}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={onClose} color="primary" disabled={loading}>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+            ref={emailInput}
+            readOnly={loading}
+            type="text"
+            autoCapitalize="off"
+            autoCorrect="off"
+            size="25"
+          />
+          <FormHelperText className={classes.error}>
+            {hasError && 'Please enter a valid email address'}
+          </FormHelperText>
+        </FormControl>
+        <div /> {/* Empty div for centering form on mobile */}
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="primary" disabled={loading}>
+          Cancel
+        </Button>
+        <Button
+          onClick={() => onSubmit(emailInput.current.value)}
+          color="primary"
+          disabled={loading}
+        >
+          Subscribe
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 
-Subscribe.propTypes = {
-  buttonClassName: PropTypes.string,
+SubscribeDialog.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
-  contained: PropTypes.bool,
   fullScreen: PropTypes.bool,
   hasError: PropTypes.bool,
   loading: PropTypes.bool,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
-  onSubscribe: PropTypes.func,
   showSubscribe: PropTypes.bool,
-  showSuccess: PropTypes.bool,
 };
 
-Subscribe.defaultProps = {
-  buttonClassName: '',
-  contained: false,
+SubscribeDialog.defaultProps = {
   fullScreen: false,
   hasError: false,
   loading: false,
   onClose: () => {},
   onSubmit: () => {},
-  onSubscribe: () => {},
   showSubscribe: false,
-  showSuccess: false,
 };
 
-export default withMobileDialog({ breakpoint: 'xs' })(withStyles(styles)(Subscribe));
+export default withMobileDialog({ breakpoint: 'xs' })(withStyles(styles)(SubscribeDialog));

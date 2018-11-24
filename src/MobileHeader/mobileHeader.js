@@ -11,7 +11,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import headshot from '../images/headshot.jpg';
 import { HeaderImage } from '../Header';
 import { Cancel, Menu } from '../icons';
-import Subscribe from '../Subscribe';
+import { SubscribeButton } from '../Subscribe';
 
 const styles = theme => ({
   button: {
@@ -54,7 +54,7 @@ const MobileHeader = ({ classes, onToggleMenu, showMenu }) => (
     <Drawer anchor="top" open={showMenu} onClose={onToggleMenu}>
       <div className={classes.menu}>
         <div className={classes.callToAction}>
-          <Subscribe />
+          <SubscribeButton />
           <Button onClick={onToggleMenu} className={classes.button} aria-label="Close menu">
             <SvgIcon color="primary">
               <Cancel />
