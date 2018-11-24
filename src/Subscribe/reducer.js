@@ -1,6 +1,7 @@
 const initialState = {
   showSubscribe: false,
   showSuccess: false,
+  showSuccessShadow: false,
   hasError: false,
   loading: false,
   error: '',
@@ -12,6 +13,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         showSuccess: true,
+        showSuccessShadow: action.showSuccessShadow,
         loading: false,
       };
     case 'CLOSE_SUBSCRIBE': {

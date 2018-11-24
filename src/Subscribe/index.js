@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'CLOSE_SUBSCRIBE',
     }),
-  onSubmit: emailDispatcher(dispatch),
+  onSubmit: emailDispatcher(dispatch, false),
   onSubscribe: () =>
     dispatch({
       type: 'OPEN_SUBSCRIBE',

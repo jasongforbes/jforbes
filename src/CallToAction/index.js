@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: 'INITIALIZE_CTA',
     }),
-  onSubmit: emailDispatcher(dispatch),
+  onSubmit: emailDispatcher(dispatch, true),
 });
 
 const WrappedCallToAction = connect(

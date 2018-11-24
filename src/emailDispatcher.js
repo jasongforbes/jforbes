@@ -12,13 +12,13 @@ function submitEmail(email) {
   return firebase.functions().httpsCallable('subscribe')({ email });
 }
 
-export default function emailDispatcher(dispatch) {
+export default function emailDispatcher(dispatch, showSuccessShadow) {
   return email => {
     dispatch({ type: 'SUBMIT_EMAIL' });
     verifyEmail(email)
       .then(() =>
         submitEmail(email)
-          .then(result => dispatch({ type: 'EMAIL_SUCCEED', result }))
+          .then(result => dispatch({ type: 'EMAIL_SUCCEED', result, showSuccessShadow }))
           .catch(error => dispatch({ type: 'SUBMIT_ERROR', error }))
       )
       .catch(() => dispatch({ type: 'INVALID_EMAIL', error: 'Email address failed verification' }));

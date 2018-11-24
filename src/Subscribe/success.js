@@ -27,7 +27,7 @@ const styles = theme => ({
   },
 });
 
-const Subscribe = ({ classes, fullScreen, onClose, showSuccess }) => (
+const Subscribe = ({ classes, fullScreen, onClose, showSuccess, showSuccessShadow }) => (
   <Dialog
     open={showSuccess}
     keepMounted
@@ -36,8 +36,8 @@ const Subscribe = ({ classes, fullScreen, onClose, showSuccess }) => (
     fullScreen={fullScreen}
     disableBackdropClick
     fullWidth
-    BackdropProps={{ invisible: true }}
-    PaperProps={{ elevation: 0 }}
+    BackdropProps={{ invisible: !showSuccessShadow }}
+    PaperProps={{ elevation: showSuccessShadow ? 24 : 0 }}
   >
     <DialogContent className={classes.content}>
       <div>
@@ -61,12 +61,14 @@ Subscribe.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
   fullScreen: PropTypes.bool,
   onClose: PropTypes.func,
+  showSuccessShadow: PropTypes.bool,
   showSuccess: PropTypes.bool,
 };
 
 Subscribe.defaultProps = {
   fullScreen: false,
   onClose: () => {},
+  showSuccessShadow: false,
   showSuccess: false,
 };
 
