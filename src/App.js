@@ -9,6 +9,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { withCTA } from './CallToAction';
 import Footer from './Footer';
 import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
@@ -173,7 +174,7 @@ const App = ({ classes }) => (
                         path={post.slug}
                         key={post.slug}
                         component={withTracker(
-                          withFullPage(lazy(() => import(`./Posts/${post.path}`)))
+                          withFullPage(withCTA(lazy(() => import(`./Posts/${post.path}`))))
                         )}
                       />
                     ))}
