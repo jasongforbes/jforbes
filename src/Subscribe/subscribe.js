@@ -61,7 +61,6 @@ const SubscribeDialog = ({
   onSubmit,
   showSubscribe,
 }) => {
-  const form = React.createRef();
   const emailInput = React.createRef();
 
   return (
@@ -108,7 +107,7 @@ const SubscribeDialog = ({
           Cancel
         </Button>
         <Button
-          onClick={() => onSubmit(emailInput.current.value, form.current)}
+          onClick={() => onSubmit(emailInput.current.value)}
           color="primary"
           disabled={loading}
         >
