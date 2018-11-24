@@ -10,6 +10,12 @@ export default function(state = initialState, action) {
         showMenu: !state.showMenu,
       };
     }
+    case 'OPEN_SUBSCRIBE': {
+      return {
+        ...state,
+        showMenu: false,
+      };
+    }
     default:
       return state;
   }
