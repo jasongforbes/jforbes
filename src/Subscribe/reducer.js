@@ -16,15 +16,12 @@ export default function(state = initialState, action) {
       };
     case 'CLOSE_SUBSCRIBE': {
       return {
-        ...state,
-        showSubscribe: false,
-        showSuccess: false,
-        loading: false,
+        ...initialState,
       };
     }
     case 'OPEN_SUBSCRIBE': {
       return {
-        ...state,
+        ...initialState,
         showSubscribe: true,
       };
     }
