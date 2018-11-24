@@ -43,7 +43,7 @@ class CallToAction extends React.Component {
   }
 
   render() {
-    const { classes, hasError, onSubmit } = this.props;
+    const { classes, emailAddress, hasError, loading, onChange, onSubmit } = this.props;
     return (
       <Grid container className={classes.page}>
         <Grid item xs={12}>
@@ -61,6 +61,9 @@ class CallToAction extends React.Component {
             margin="normal"
             variant="outlined"
             error={hasError}
+            disabled={loading}
+            onChange={e => onChange(e.target.value)}
+            value={emailAddress}
             InputProps={{
               classes: {
                 focused: classes.border,
@@ -71,8 +74,9 @@ class CallToAction extends React.Component {
           <Button
             variant="contained"
             color="primary"
+            disabled={loading}
             className={classes.button}
-            onClick={() => onSubmit(this.emailInput.current.value)}
+            onClick={() => onSubmit(emailAddress)}
           >
             <Typography variant="button" color="secondary">
               Subscribe
@@ -91,13 +95,19 @@ class CallToAction extends React.Component {
 
 CallToAction.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  emailAddress: PropTypes.string,
   hasError: PropTypes.bool,
+  loading: PropTypes.bool,
+  onChange: PropTypes.func,
   onMount: PropTypes.func,
   onSubmit: PropTypes.func,
 };
 
 CallToAction.defaultProps = {
+  emailAddress: '',
   hasError: false,
+  loading: false,
+  onChange: () => {},
   onMount: () => {},
   onSubmit: () => {},
 };
