@@ -28,9 +28,10 @@ const WrappedCallToAction = connect(
 
 const withCTA = (WrappedComponent, options = {}) => {
   const HOC = props => (
-    <WrappedCallToAction>
+    <React.Fragment>
       <WrappedComponent {...props} />
-    </WrappedCallToAction>
+      <WrappedCallToAction />
+    </React.Fragment>
   );
   return HOC;
 };
