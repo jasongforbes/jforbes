@@ -25,7 +25,7 @@ const Summary = ({ date, classes, slug, summary, title }) => (
       </Typography>
     </Link>
     <Typography variant="subtitle1">{date}</Typography>
-    <Typography variant="body1">{summary}</Typography>
+    <Typography variant="body1">{`${summary}...`}</Typography>
   </div>
 );
 
