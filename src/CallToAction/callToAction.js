@@ -43,6 +43,9 @@ const styles = theme => ({
       },
     },
   },
+  cta: {
+    paddingTop: '62px',
+  },
 });
 
 class CallToAction extends React.Component {
@@ -55,7 +58,7 @@ class CallToAction extends React.Component {
   render() {
     const { classes, emailAddress, hasError, loading, onChange, onSubmit } = this.props;
     return (
-      <Grid container className={classes.page}>
+      <Grid container className={classes.cta}>
         <Grid item xs={12}>
           <Typography variant="h4">Like this post and want to see more?</Typography>
           <Typography variant="subtitle1">
