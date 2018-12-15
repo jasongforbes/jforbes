@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Highlight from '../../Highlight';
 import posts from '../posts.json';
+import AnimatedPlot from './animatedPlot';
 import 'highlight.js/styles/ocean.css';
 
 const postData = slug => posts.filter(post => post.slug === slug);
@@ -48,10 +49,10 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           For an example, take a standard wall-clock. The hour hand of a wall-clock will sweep from
           0:00 to 11:59 in the course of 12 hours. If you plot the position of the hour-hand over
-          the course of two days, you will notice a predictable &quot;jump&quot; from 11:59 to 0:00
-          as the hand sweeps across the 12th hour.
+          the course of three days, you will notice a predictable &quot;jump&quot; from 11:59 to
+          0:00 as the hand sweeps across the 12th hour.
         </Typography>
-        {/*TODO: plot */}
+        <AnimatedPlot />
         <Typography variant="body1">
           Next, assume that you are in an room with only a clock and a light-bulb. You are told that
           the clock is not working correctly. It may be running either faster or slower than normal
