@@ -327,13 +327,25 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           Finally, we can code a solution. First, lets generate test-data.
         </Typography>
+        <Highlight language="javascript">
+          const A = tf.scalar(speed);{'\n'}
+          const b = tf.scalar(rollover);{'\n'}
+          const x = tf.range(0, 10 * rollover, 0.25);{'\n'}
+          const y_tilde = tf.mod(tf.add(tf.mul(A, x), tf.randomNormal([x.size], 0, mu)), b);
+        </Highlight>
         <Typography variant="body1">
           Next, we want to transform the data into an appropriate form. This includes applying a
-          scaling factor <MathJax.Node inline formula="c" /> and taking the complex exponential.
+          scaling factor <MathJax.Node inline formula="c" /> and introducing a complex harmonic.
         </Typography>
+        <Highlight language="javascript">
+          const c = tf.scalar((2 * Math.PI) / rollover);{'\n'}
+          const exp = tf.mul(c, yTilde);{'\n'}
+          const f = tf.complex(tf.cos(exp), tf.sin(exp));
+        </Highlight>
         <Typography variant="body1">
           Using the FFT, the sampled data can be converted to the frequency domain.
         </Typography>
+        <Highlight language="javascript">const F = tf.spectral.fft(f);</Highlight>
         <Typography variant="body1">
           The amplitude can be visualized by plotting the absolute value of the output. Notice the
           large spike. The frequency at which it appears corresponds to the factor{' '}
@@ -343,10 +355,16 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           Determine the location of the spike, and convert the index to a frequency.
         </Typography>
+        <Highlight language="javascript">
+          const max = tf.argMax(tf.abs(F));{'\n'}
+          const freqBin = (2 * Math.PI) / (sampleRate * F.size);{'\n'}
+          const spike = tf.mul(freqBin, max.toFloat());
+        </Highlight>
         <Typography variant="body1">
           Lastly, undo the previous transformation by multiplying the frequency by the inverse
           scaling factor <MathJax.Node inline formula="1/c" />.
         </Typography>
+        <Highlight language="javascript">return tf.div(spike, c).dataSync()[0];</Highlight>
         <Typography variant="h4">Conclusion</Typography>
         <Typography variant="body1">
           In the above post I have shown how to easily linearly fit a signal that has regular
