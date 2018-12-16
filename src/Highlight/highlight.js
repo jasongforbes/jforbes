@@ -8,6 +8,7 @@ const styles = {
     margin: '27px 0px',
     '& code': {
       borderRadius: '4px',
+      lineHeight: '1.5em',
     },
   },
 };
