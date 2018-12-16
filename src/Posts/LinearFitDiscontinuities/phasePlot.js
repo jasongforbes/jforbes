@@ -34,20 +34,23 @@ class PhasePlot extends Component {
     this.ctx = React.createRef();
     this.clockTime = clockTime(clockSpeed, noise, 12);
     this.labels = linspace(0, 4, maxTime);
-    this.x = linspace(0, 0.5, maxTime);
+    this.x = linspace(0, 0.25, maxTime);
   }
 
   componentDidMount() {
+    const { showCurrentTime } = this.props;
     this.phasePlot = new Chart(this.ctx.current, {
       type: 'scatter',
       data: {
         datasets: [
-          {
-            data: this.getCurrentTime(),
-            backgroundColor: 'rgb(107,133,149)',
-            borderColor: 'rgba(9, 51, 79, 1.0)',
-            pointRadius: 8,
-          },
+          showCurrentTime
+            ? {
+                data: this.getCurrentTime(),
+                backgroundColor: 'rgb(107,133,149)',
+                borderColor: 'rgba(9, 51, 79, 1.0)',
+                pointRadius: 8,
+              }
+            : {},
           {
             data: this.getDataSet(),
             pointRadius: 0,
@@ -92,15 +95,20 @@ class PhasePlot extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { currentTime } = this.props;
-    const { currentTime: prevTime } = prevProps;
-    if (currentTime !== prevTime) {
+    const { clockSpeed, currentTime, noise, showCurrentTime } = this.props;
+    const { clockSpeed: prevSpeed, currentTime: prevTime, noise: prevNoise } = prevProps;
+    if (showCurrentTime && currentTime !== prevTime) {
       this.phasePlot.data.datasets[0].data = this.getCurrentTime();
       if (currentTime % 12 < prevTime % 12) {
         this.phasePlot.update({ duration: 0 });
       } else {
         this.phasePlot.update();
       }
+    }
+    if (clockSpeed !== prevSpeed || noise !== prevNoise) {
+      this.clockTime = clockTime(clockSpeed, noise, 12);
+      this.phasePlot.data.datasets[1].data = this.getDataSet();
+      this.phasePlot.update({ duration: 0 });
     }
   }
 
@@ -132,6 +140,7 @@ PhasePlot.propTypes = {
   currentTime: PropTypes.number,
   maxTime: PropTypes.number,
   noise: PropTypes.number,
+  showCurrentTime: PropTypes.bool,
 };
 
 PhasePlot.defaultProps = {
@@ -139,6 +148,7 @@ PhasePlot.defaultProps = {
   currentTime: 4,
   maxTime: 36,
   noise: 0,
+  showCurrentTime: true,
 };
 
 export default withStyles(styles)(PhasePlot);
