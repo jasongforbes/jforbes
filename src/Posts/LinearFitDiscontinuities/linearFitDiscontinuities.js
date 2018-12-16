@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Highlight from '../../Highlight';
 import posts from '../posts.json';
 import AnimatedPlot from './animatedPlot';
+import CustomizablePlot from './customizablePlot';
+import PhasePlot from './phasePlot';
 import 'highlight.js/styles/ocean.css';
 
 const postData = slug => posts.filter(post => post.slug === slug);
@@ -63,7 +65,9 @@ const Post = ({ classes, match }) => {
           shown on the clock. We can model this uncertainty as noise. Notice how the noise has an
           outsized effect near the discontinuity, potentially causing many more discontinuities.
         </Typography>
-        {/*TODO: plot */}
+        <CustomizablePlot>
+          <PhasePlot showCurrentTime={false} />
+        </CustomizablePlot>
         <Typography variant="body1">
           Your goal is to estimate the rate-of-change of the clock, neglecting the effect of this
           noise as best as possible. Now, you may have heard of this magical thing called a
