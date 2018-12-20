@@ -8,6 +8,7 @@ import posts from '../posts.json';
 import AnimatedPlot from './animatedPlot';
 import CustomizablePlot from './customizablePlot';
 import PhasePlot from './phasePlot';
+import FFTPlot from './fftPlot';
 import 'highlight.js/styles/ocean.css';
 
 const postData = slug => posts.filter(post => post.slug === slug);
@@ -347,24 +348,28 @@ const Post = ({ classes, match }) => {
         </Typography>
         <Highlight language="javascript">const F = tf.spectral.fft(f);</Highlight>
         <Typography variant="body1">
-          The amplitude can be visualized by plotting the absolute value of the output. Notice the
-          large spike. The frequency at which it appears corresponds to the factor{' '}
-          <MathJax.Node inline formula={'\\phi = 2\\pi A / b'} />.
-        </Typography>
-        {/* TODO: Plot FFT vs angle */}
-        <Typography variant="body1">
-          Determine the location of the spike, and convert the index to a frequency.
+          By design, the sample data is a harmonic at a frequency which corresponds to the
+          clock-speed. The FFT will contain a single spike at the frequency of this harmonic{' '}
+          <MathJax.Node inline formula={'\\phi = 2\\pi A / b'} />. Determining the location of the
+          spike is trivial by searching the FFT data, and the frequency can then be converted back
+          to clock-speed using the inverse scaling factor <MathJax.Node inline formula="1/c" />.
         </Typography>
         <Highlight language="javascript">
           const max = tf.argMax(tf.abs(F));{'\n'}
           const freqBin = (2 * Math.PI) / (sampleRate * F.size);{'\n'}
-          const spike = tf.mul(freqBin, max.toFloat());
+          const spike = tf.mul(freqBin, max.toFloat());{'\n'}
+          return tf.div(spike, c).dataSync()[0];
         </Highlight>
         <Typography variant="body1">
-          Lastly, undo the previous transformation by multiplying the frequency by the inverse
-          scaling factor <MathJax.Node inline formula="1/c" />.
+          The amplitude can be visualized by plotting the absolute value of the FFT output. Notice
+          the large spike and how its location remains invariant in the presence of noise. Yet, as
+          the noise is allowed to increase past a certain threshold, the spike would be
+          indistinguishable form the noise-floor. At this point, the clock-speed becomes
+          irrecoverable.
         </Typography>
-        <Highlight language="javascript">return tf.div(spike, c).dataSync()[0];</Highlight>
+        <CustomizablePlot>
+          <FFTPlot />
+        </CustomizablePlot>
         <Typography variant="h4">Conclusion</Typography>
         <Typography variant="body1">
           In the above post I have shown how to easily linearly fit a signal that has regular
