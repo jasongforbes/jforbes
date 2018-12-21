@@ -84,14 +84,23 @@ const Post = ({ classes, match }) => {
         </Typography>
         <Typography variant="body1">
           We will use this problem to explore the basics of the Fourier Transform. The code for all
-          plots can be found here.
+          plots can be found{' '}
+          <a href="https://github.com/jasongforbes/jforbes.io/tree/master/src/Posts/LinearFitDiscontinuities">
+            here
+          </a>
+          . While this post will retain the wall-clock metaphor throughout, this method is
+          applicable whenever you want to determine the constant rate of change of something that
+          routinely &quot;rolls-over&quot;. This could be a rotating device (motor, generator,
+          potentiometer), or even{' '}
+          <a href="https://en.wikipedia.org/wiki/Integer_overflow">an integer with overflow</a>.
         </Typography>
         <Typography variant="h4">Tools</Typography>
         <Typography variant="body1">
-          To solve this problem, we will be using extensive use of the TensorFlow.js library.
-          TensorFlow.js, and its Python counterpart, are best known for their capabilities to
-          perform machine-learning. Instead, we will be utilizing it for its highly optimized
-          mathematic operations. To follow along, you will need to be aware of a few subtleties.
+          To solve this problem, we will be using extensive use of the{' '}
+          <a href="https://js.tensorflow.org/">TensorFlow.js</a> library. TensorFlow.js, and its
+          Python counterpart, are best known for their capabilities to perform machine-learning.
+          Instead, we will be utilizing it for its highly optimized mathematic operations. To follow
+          along, you will need to be aware of a few subtleties.
         </Typography>
         <div className={classes.indent}>
           <Typography variant="h5">The Fast Fourier Transform (FFT)</Typography>
@@ -107,11 +116,13 @@ const Post = ({ classes, match }) => {
         <div className={classes.indent}>
           <Typography variant="h5">Vector Operations</Typography>
           <Typography variant="body1">
-            Traditionally, linear-algebra operations were computed by specialized libraries known as
-            BLAS and LAPACK (again, an interesting topic in itself). In these libraries, vectors and
-            matrices were treated fundamentally different, even though there are many similarities
-            between the two. In fact, there&apos;s an &quot;is a&quot; relationship between vectors
-            and matrices – all vectors are matrices, but not all matrices are vectors.
+            Traditionally, linear-algebra operations were computed by specialized libraries known as{' '}
+            <a href="http://www.netlib.org/blas/">BLAS</a> and{' '}
+            <a href="http://www.netlib.org/lapack/">LAPACK</a> (again, an interesting topic in
+            itself). In these libraries, vectors and matrices were treated fundamentally different,
+            even though there are many similarities between the two. In fact, there&apos;s an
+            &quot;is a&quot; relationship between vectors and matrices – all vectors are matrices,
+            but not all matrices are vectors.
           </Typography>
           <Typography variant="body1">
             In TensorFlow, a similar abstraction is made for higher-order types. A vector &quot;is
@@ -192,7 +203,8 @@ const Post = ({ classes, match }) => {
         <MathJax.Node className={classes.math} formula={'A \\sin(\\omega x + \\phi)'} />
         <Typography variant="body1">
           For simplicity, the Fourier Transform typically represents harmonics as a complex
-          exponential, using Euler&apos;s Formula.
+          exponential, using{' '}
+          <a href="https://en.wikipedia.org/wiki/Euler%27s_formula">Euler&apos;s Formula</a>.
         </Typography>
         <MathJax.Node
           className={classes.math}
@@ -303,7 +315,11 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           The Fourier Transform is then used to write this in terms of frequency. Instead of
           deriving the Fourier Transform for a complex exponential, I will point you towards a table
-          of common transformations.
+          of{' '}
+          <a href="https://en.wikipedia.org/wiki/Fourier_transform#Distributions,_one-dimensional">
+            common transformations
+          </a>
+          .
         </Typography>
         <MathJax.Node
           className={classes.math}
