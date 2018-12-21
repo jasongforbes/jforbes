@@ -50,9 +50,9 @@ const Projects = ({ classes }) => (
           </a>
           <Typography variant="body1">
             A simple blogging platform which converts user written markdown files into HTML. It is
-            available via the MIT OpenSource License. One of the goals of this project is to provide
-            a simple use-case for learning React and front-end web-development. The aim was to make
-            a personal landing-page framework which was extensible while retaining simplicity.
+            available via the MIT OpenSource License. This project started as a way to practice
+            React and front-end web-development. The aim was to make an extensible landing-page
+            framework while retaining simplicity.
           </Typography>
         </div>
       </Grid>

@@ -43,9 +43,8 @@ const About = ({ classes }) => (
         <Typography variant="h3">About</Typography>
         <Typography variant="body1">
           I am a software engineer from St. John&#39;s, Newfoundland. I have a Master&#39;s in
-          Applied Sciences, with a focus in power-converter simulation and efficient computation of
-          systems. I currently work as a Senior Software Engineer for{' '}
-          <a href="http://krakenrobotics.com/">Kraken Robotics</a>.
+          Applied Sciences, with a focus in power-converter simulation. I currently work as a Senior
+          Software Engineer for <a href="http://krakenrobotics.com/">Kraken Robotics</a>.
         </Typography>
         <Typography variant="body1">Since graduation, my focus has been in:</Typography>
         <ul>
