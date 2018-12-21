@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MathJax from 'react-mathjax';
+import { Helmet } from 'react-helmet';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Highlight from '../../Highlight';
@@ -37,14 +38,18 @@ const styles = theme => ({
 });
 
 const Post = ({ classes, match }) => {
-  const { date, title } = postData(match.url)[0];
+  const { date, title, summary } = postData(match.url)[0];
   return (
     <MathJax.Provider>
+      <Helmet>
+        <title>{`${title} - Jason Forbes`}</title>
+        <meta name="description" content={summary} />
+      </Helmet>
       <React.Fragment>
         <Typography variant="h3">{title}</Typography>
         <Typography variant="subtitle1">{date}</Typography>
         <Typography variant="body1">
-          Recently I came upon an interesting problem – how could you easily estimate a linear
+          Recently I came upon an interesting problem – how could you easily estimate a noisy linear
           function if it contained regular discontinuities. The most natural place where this can
           come up is when the range of the function &quot;wraps around&quot;. Angles and rotations
           are natural examples of this.
