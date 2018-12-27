@@ -15,13 +15,14 @@ import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
 import ScrollToTop from './ScrollToTop';
-import { SubscribeDialog, SuccessDialog } from './Subscribe';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
 import postList from './Posts/posts.json';
 import './App.css';
 
 const Privacy = withTracker(lazy(() => import('./Privacy')));
+const SubscribeDialog = lazy(() => import('./SubscribeDialog'));
+const SuccessDialog = lazy(() => import('./SuccessDialog'));
 
 const theme = createMuiTheme({
   typography: {
@@ -134,10 +135,8 @@ const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
     <Helmet>
-      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
       <link rel="preconnect" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <title>Jason Forbes - Full-Stack Software Engineer and Numbers Guy</title>
       <meta
         name="description"
@@ -150,8 +149,12 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <SubscribeDialog />
-                <SuccessDialog />
+                <Suspense fallback={<div />}>
+                  <SubscribeDialog />
+                </Suspense>
+                <Suspense fallback={<div />}>
+                  <SuccessDialog />
+                </Suspense>
                 <Suspense
                   fallback={
                     <FullPage>
