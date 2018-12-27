@@ -58,7 +58,7 @@ class CallToAction extends React.Component {
   render() {
     const { classes, emailAddress, hasError, loading, onChange, onSubmit } = this.props;
     return (
-      <Grid container className={classes.cta}>
+      <Grid container className={classes.cta} spacing={0}>
         <Grid item xs={12}>
           <Typography variant="h4">Like this post and want to see more?</Typography>
           <Typography variant="subtitle1">
@@ -69,6 +69,7 @@ class CallToAction extends React.Component {
           <TextField
             ref={this.emailInput}
             className={classes.input}
+            aria-label="Email Address"
             label="Email Address"
             placeholder="Email Address"
             margin="normal"
