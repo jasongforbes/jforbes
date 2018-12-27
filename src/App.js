@@ -15,14 +15,13 @@ import FullPage, { withFullPage } from './FullPage';
 import Page from './Page';
 import PathNotFound from './pathNotFound';
 import ScrollToTop from './ScrollToTop';
+import { SubscribeDialog, SuccessDialog } from './Subscribe';
 import rootReducer from './reducers';
 import withTracker from './withTracker';
 import postList from './Posts/posts.json';
 import './App.css';
 
 const Privacy = withTracker(lazy(() => import('./Privacy')));
-const SubscribeDialog = lazy(() => import('./SubscribeDialog'));
-const SuccessDialog = lazy(() => import('./SuccessDialog'));
 
 const theme = createMuiTheme({
   typography: {
@@ -149,12 +148,8 @@ const App = ({ classes }) => (
           <ScrollToTop>
             <div className={classes.app}>
               <React.Fragment>
-                <Suspense fallback={<div />}>
-                  <SubscribeDialog />
-                </Suspense>
-                <Suspense fallback={<div />}>
-                  <SuccessDialog />
-                </Suspense>
+                <SubscribeDialog />
+                <SuccessDialog />
                 <Suspense
                   fallback={
                     <FullPage>
