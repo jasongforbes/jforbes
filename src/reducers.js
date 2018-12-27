@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { reducer as cta } from './CallToAction';
-import { reducer as mobileHeader } from './MobileHeader';
-import { reducer as subscribe } from './Subscribe';
-import { reducer as linearFitPost } from './Posts/LinearFitDiscontinuities';
+import cta from './CallToAction/reducer';
+import mobileHeader from './MobileHeader/reducers';
+import subscribe from './Subscribe/reducer';
+import linearFitPost from './Posts/LinearFitDiscontinuities/reducer';
 
 export default combineReducers({ cta, linearFitPost, mobileHeader, subscribe });
