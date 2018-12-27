@@ -43,15 +43,6 @@ const Clock = ({ classes, time }) => {
   return (
     <svg viewBox="0 0 200 200" className={classes.clock}>
       <defs>
-        <line
-          id="tick"
-          className={classes.tick}
-          x1="100"
-          y1="38"
-          x2="100"
-          y2="28"
-          strokeLinecap="round"
-        />
         <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
           <feOffset in="blur" dx="2.5" dy="2.5" />
@@ -60,18 +51,18 @@ const Clock = ({ classes, time }) => {
       <circle className={classes.shadow} cx="97" cy="100" r="85" filter="url(#innerShadow)" />
       <circle className={classes.clockFace} cx="100" cy="100" r="80" />
       <g id="ticks">
-        <use href="#tick" transform="rotate(0 100 100)" />
-        <use href="#tick" transform="rotate(30 100 100)" />
-        <use href="#tick" transform="rotate(60 100 100)" />
-        <use href="#tick" transform="rotate(90 100 100)" />
-        <use href="#tick" transform="rotate(120 100 100)" />
-        <use href="#tick" transform="rotate(150 100 100)" />
-        <use href="#tick" transform="rotate(180 100 100)" />
-        <use href="#tick" transform="rotate(210 100 100)" />
-        <use href="#tick" transform="rotate(240 100 100)" />
-        <use href="#tick" transform="rotate(270 100 100)" />
-        <use href="#tick" transform="rotate(300 100 100)" />
-        <use href="#tick" transform="rotate(330 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(0 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(30 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(60 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(90 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(120 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(150 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(180 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(210 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(240 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(270 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(300 100 100)" />
+        <line className={classes.tick} x1="100" y1="38" x2="100" y2="28" strokeLinecap="round" transform="rotate(330 100 100)" />
       </g>
       <circle className={classes.clockDial} cx="100" cy="100" r="4" />
       <g transform={`rotate(${(time / 12) * 360}, 100, 100)`}>
