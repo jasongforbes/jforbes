@@ -1,19 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/lab/Slider';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
-  flex: {
-    margin: '50px 0',
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    [theme.breakpoints.down('xs')]: {
-      flexWrap: 'wrap',
-      justifyContent: 'flex-start',
-    },
+  padding: {
+    margin: '50px 0px',
   },
   slider: {
     touchAction: 'none',
@@ -22,20 +17,23 @@ const styles = theme => ({
   },
   sliderWithLabel: {
     minWidth: '200px',
-    margin: '30px 30px 0px 0px',
+    padding: '30px 30px 0px 0px',
     [theme.breakpoints.down('xs')]: {
-      margin: '15px 20px 15px 50px',
+      padding: '0 20px 30px 62px',
     },
   },
   sliders: {
     display: 'flex',
-    flexGrow: 2,
     [theme.breakpoints.down('xs')]: {
       margin: '0px 0px 45px',
       overflowX: 'hidden',
     },
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  thumb: {
+    width: '18px',
+    height: '18px',
   },
 });
 
@@ -47,13 +45,14 @@ const CustomizablePhasePlot = ({
   handleNoiseChange,
   noise,
 }) => (
-  <div className={classes.flex}>
-    <div className={classes.sliders}>
+  <Grid container spacing={0} className={classes.padding}>
+    <Grid item xs={12} sm={5} md={6} xl={7} className={classes.sliders}>
       <div className={classes.sliderWithLabel}>
         <Typography variant="body1">Clock Speed</Typography>
         <Slider
           aria-label="Clock speed slider"
           className={classes.slider}
+          classes={{ thumb: classes.thumb }}
           onChange={handleSpeedChange}
           value={clockSpeed}
           min={0.1}
@@ -65,15 +64,18 @@ const CustomizablePhasePlot = ({
         <Slider
           aria-label="Noise slider"
           className={classes.slider}
+          classes={{ thumb: classes.thumb }}
           onChange={handleNoiseChange}
           value={noise}
           min={0}
           max={3}
         />
       </div>
-    </div>
-    {React.cloneElement(children, { clockSpeed, noise })}
-  </div>
+    </Grid>
+    <Grid item xs={12} sm={7} md={6} xl={5}>
+      {React.cloneElement(children, { clockSpeed, noise })}
+    </Grid>
+  </Grid>
 );
 
 CustomizablePhasePlot.propTypes = {

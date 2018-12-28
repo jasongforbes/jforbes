@@ -2,18 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'chart.js';
 import * as tf from '@tensorflow/tfjs';
-import { withStyles } from '@material-ui/core/styles';
 import { getSpectralData } from './linearFit';
-
-const styles = theme => ({
-  canvas: {
-    minHeight: '200px',
-    minWidth: '200px',
-    maxHeight: '400px',
-    maxWidth: '400px',
-    flexGrow: 1.5,
-  },
-});
 
 class FFTPlot extends Component {
   constructor(props) {
@@ -76,7 +65,7 @@ class FFTPlot extends Component {
         },
       },
     });
-    setTimeout(() => this.updateDataSet(), 5000);
+    setTimeout(() => this.updateDataSet(), 3000);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -117,9 +106,8 @@ class FFTPlot extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.canvas}>
+      <div>
         <canvas ref={this.ctx} width="200px" height="200px" />
       </div>
     );
@@ -127,7 +115,6 @@ class FFTPlot extends Component {
 }
 
 FFTPlot.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   clockSpeed: PropTypes.number,
   noise: PropTypes.number,
 };
@@ -137,4 +124,4 @@ FFTPlot.defaultProps = {
   noise: 0,
 };
 
-export default withStyles(styles)(FFTPlot);
+export default FFTPlot;

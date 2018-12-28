@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'chart.js';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-  canvas: {
-    minHeight: '250px',
-    minWidth: '250px',
-    maxHeight: '400px',
-    maxWidth: '400px',
-    flexGrow: 1.5,
-  },
-});
 
 function linspace(start, inc, stop) {
   const arr = [];
@@ -77,6 +66,10 @@ class PhasePlot extends Component {
                 beginAtZero: true,
                 callback: (label, index, labels) => `${label}:00`,
               },
+              scaleLabel: {
+                display: true,
+                labelString: 'Observed Time',
+              },
             },
           ],
           xAxes: [
@@ -86,6 +79,10 @@ class PhasePlot extends Component {
                 max: this.maxTime,
                 stepSize: 6,
                 callback: (label, index, labels) => `${label}:00`,
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Actual Time',
               },
             },
           ],
@@ -125,9 +122,8 @@ class PhasePlot extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.canvas}>
+      <div>
         <canvas ref={this.ctx} width="200px" height="200px" />
       </div>
     );
@@ -135,7 +131,6 @@ class PhasePlot extends Component {
 }
 
 PhasePlot.propTypes = {
-  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   clockSpeed: PropTypes.number,
   currentTime: PropTypes.number,
   maxTime: PropTypes.number,
@@ -151,4 +146,4 @@ PhasePlot.defaultProps = {
   showCurrentTime: true,
 };
 
-export default withStyles(styles)(PhasePlot);
+export default PhasePlot;
