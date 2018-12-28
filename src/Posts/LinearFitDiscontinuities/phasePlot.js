@@ -103,10 +103,13 @@ class PhasePlot extends Component {
       }
     }
     if (clockSpeed !== prevSpeed || noise !== prevNoise) {
-      this.clockTime = clockTime(clockSpeed, noise, 12);
-      this.phasePlot.data.datasets[1].data = this.getDataSet();
-      this.phasePlot.update({ duration: 0 });
+      return new Promise(() => {
+        this.clockTime = clockTime(clockSpeed, noise, 12);
+        this.phasePlot.data.datasets[1].data = this.getDataSet();
+        this.phasePlot.update({ duration: 0 });
+      });
     }
+    return new Promise();
   }
 
   getDataSet() {

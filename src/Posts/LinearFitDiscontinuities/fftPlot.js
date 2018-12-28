@@ -72,8 +72,11 @@ class FFTPlot extends Component {
     const { clockSpeed, noise } = this.props;
     const { clockSpeed: prevSpeed, noise: prevNoise } = prevProps;
     if (clockSpeed !== prevSpeed || noise !== prevNoise) {
-      this.updateDataSet();
+      return new Promise(() => {
+        this.updateDataSet();
+      });
     }
+    return new Promise();
   }
 
   updateDataSet() {
