@@ -37,6 +37,8 @@ const styles = theme => ({
   },
 });
 
+window.addEventListener('touchstart', () => {}, { passive: false });
+
 const CustomizablePhasePlot = ({
   children,
   classes,
@@ -54,6 +56,7 @@ const CustomizablePhasePlot = ({
           className={classes.slider}
           classes={{ thumb: classes.thumb }}
           onChange={handleSpeedChange}
+          onTouchStart={e => e.preventDefault()}
           value={clockSpeed}
           min={0.1}
           max={4}
@@ -69,6 +72,7 @@ const CustomizablePhasePlot = ({
           value={noise}
           min={0}
           max={3}
+          onTouchStart={e => e.preventDefault()}
         />
       </div>
     </Grid>
