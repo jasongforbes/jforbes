@@ -55,7 +55,7 @@ const numPages = Math.ceil(posts.length / numPostsPerPage);
 const Posts = ({ classes, match }) => {
   const page = Number(match.params.id) || 0;
   const startPost = numPostsPerPage * page;
-  if (page >= numPages) {
+  if (page >= numPages && page > 0) {
     return <Redirect to="/error404" />;
   }
   return (
