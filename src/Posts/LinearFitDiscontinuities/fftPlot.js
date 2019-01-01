@@ -76,7 +76,7 @@ class FFTPlot extends Component {
         this.updateDataSet();
       });
     }
-    return new Promise();
+    return new Promise(() => {});
   }
 
   updateDataSet() {

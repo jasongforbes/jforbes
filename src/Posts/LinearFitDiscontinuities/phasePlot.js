@@ -109,7 +109,7 @@ class PhasePlot extends Component {
         this.phasePlot.update({ duration: 0 });
       });
     }
-    return new Promise();
+    return new Promise(() => {});
   }
 
   getDataSet() {
