@@ -134,10 +134,8 @@ const App = ({ classes }) => (
   <React.Fragment>
     <CssBaseline />
     <Helmet>
-      <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
       <link rel="preconnect" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <title>Jason Forbes - Full-Stack Software Engineer and Numbers Guy</title>
       <meta
         name="description"

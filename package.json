@@ -4,15 +4,19 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.2.2",
+    "@material-ui/lab": "^3.0.0-alpha.25",
     "@tensorflow/tfjs": "^0.14.0",
+    "chart.js": "^2.7.3",
     "firebase": "^5.5.8",
     "highlight.js": "^9.13.1",
+    "katex": "^0.10.0",
+    "popmotion": "^8.5.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
     "react-dom": "^16.5.2",
     "react-ga": "^2.5.3",
     "react-helmet": "^5.2.0",
-    "react-mathjax": "^1.0.1",
+    "react-katex": "^2.0.2",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
@@ -25,7 +29,8 @@
     "build": "react-scripts build",
     "deploy": "npm run build && firebase deploy",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now": "react-scripts build && now build -A ../now.json --name jforbes"
   },
   "browserslist": [
     ">0.2%",

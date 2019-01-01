@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "title": "How to Linear Fit a Noisy Signal with Regular Discontinuities",
+    "date": "January 1, 2019",
+    "summary": "How could you estimate a noisy linear function if it contained regular discontinuities? The most natural place where this can come up is when the range of the function \"wraps around\". Angles and rotations are natural examples of this",
+    "slug": "/linear-fit-regular-discontinuities",
+    "path": "LinearFitDiscontinuities"
+  }
+]
