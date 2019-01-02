@@ -58,7 +58,7 @@ class FFTPlot extends Component {
               },
               scaleLabel: {
                 display: true,
-                labelString: 'Cock Speed',
+                labelString: 'Clock Speed',
               },
             },
           ],

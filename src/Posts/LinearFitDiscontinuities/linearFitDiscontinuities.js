@@ -396,8 +396,8 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           To visualize the amplitude, plot the absolute value of the FFT output. Notice the large
           spike and how its location remains invariant in the presence of noise. Yet, as the noise
-          is increases past a certain threshold, the spike would become indistinguishable form the
-          noise. At this point, the clock-speed becomes irrecoverable.
+          increases past a certain threshold, the spike becomes indistinguishable form the noise. At
+          this point, the clock-speed becomes irrecoverable.
         </Typography>
         <CustomizablePlot>
           <FFTPlot />
