@@ -1,34 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InlineMath, BlockMath } from 'react-katex';
-import { Helmet } from 'react-helmet';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Highlight from '../../Highlight';
-import posts from '../posts.json';
 import styles from '../style';
 import AnimatedPlot from './animatedPlot';
 import CustomizablePlot from './customizablePlot';
 import PhasePlot from './phasePlot';
 import FFTPlot from './fftPlot';
+import { getHelmet } from '../utilities';
 import 'highlight.js/styles/ocean.css';
 
-const postData = slug => posts.filter(post => post.slug === slug);
-
 const Post = ({ classes, match }) => {
-  const { date, title, summary } = postData(match.url)[0];
+  const { helmet, title, date } = getHelmet(match.url);
   return (
     <React.Fragment>
-      <Helmet>
-        <title>{`${title} - Jason Forbes`}</title>
-        <meta name="description" content={summary} />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
-          integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
-          crossOrigin="anonymous"
-        />
-      </Helmet>
+      {helmet}
       <React.Fragment>
         <Typography variant="h3">{title}</Typography>
         <Typography variant="subtitle1">{date}</Typography>
