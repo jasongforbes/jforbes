@@ -22,4 +22,7 @@ export default theme => ({
       color: '#5B626B',
     },
   },
+  padding: {
+    margin: '50px 0',
+  },
 });

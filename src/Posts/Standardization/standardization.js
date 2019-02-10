@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InlineMath, BlockMath } from 'react-katex';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Highlight from '../../Highlight';
 import styles from '../style';
 import { getHelmet } from '../utilities';
+import TimeSeries from './timeSeries';
 import 'highlight.js/styles/ocean.css';
 
 const Post = ({ classes, match }) => {
@@ -33,11 +35,14 @@ const Post = ({ classes, match }) => {
           This is the kind of issue standardization solves. Lets simplify the problem by analyzing
           the time-series.
         </Typography>
-        {/* TODO: Time series comparison */}
-        <Typography variant="body1">
-          This is the kind of issue standardization solves. Lets simplify the problem by analyzing
-          the time-series.
-        </Typography>
+        <Grid container spacing={0} className={classes.padding}>
+          <Grid item xs={12} sm={5} md={6} xl={7}>
+            <TimeSeries title="Prototype" />
+          </Grid>
+          <Grid item xs={12} sm={7} md={6} xl={5}>
+            <TimeSeries title="Production" bias={0.03} standardDeviation={0.4} />
+          </Grid>
+        </Grid>
         <Typography variant="body1">
           First notice that the low-cost sensor has an offset. The time-series recorded is non-zero,
           even at points of silence. This is an example of bias in the low-cost sensor, the effect
