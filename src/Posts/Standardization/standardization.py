@@ -38,9 +38,11 @@ def standardize_vec(x, M):
     return (x[:-M] - mean) / std
 
 
-def generate_test_data(path, output):
+def generate_test_data(path, output, standardize):
     data, _ = sf.read(path)
     data = data[0:data.size:20]
+    if(standardize):
+        data = standardize_vec(data, 100)
     json.dump(data.tolist(), codecs.open(output, 'w', encoding='utf-8'),
               separators=(',', ':'), sort_keys=True, indent=4)
 
@@ -54,6 +56,7 @@ class Data(object):
 
 
 if __name__ == "__main__":
+    generate_test_data('C:/Users/Jason/Desktop/LDC93S1.wav', './data.standardize.json', True)
     out = standardize_vec(Data.x, Data.M)
     print(timeit.timeit("standardize(Data.x, Data.M)",
                         setup="from __main__ import standardize, Data", number=50))
