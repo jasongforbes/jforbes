@@ -1,4 +1,7 @@
 import numpy as np
+import soundfile as sf
+import codecs
+import json
 import timeit
 
 
@@ -35,6 +38,13 @@ def standardize_vec(x, M):
     return (x[:-M] - mean) / std
 
 
+def generate_test_data(path, output):
+    data, _ = sf.read(path)
+    data = data[0:data.size:20]
+    json.dump(data.tolist(), codecs.open(output, 'w', encoding='utf-8'),
+              separators=(',', ':'), sort_keys=True, indent=4)
+
+
 class Data(object):
     M = 2048
     x = 200*np.random.randn(10000) + 20
@@ -42,7 +52,10 @@ class Data(object):
     def __init__(self):
         pass
 
+
 if __name__ == "__main__":
     out = standardize_vec(Data.x, Data.M)
-    print(timeit.timeit("standardize(Data.x, Data.M)", setup="from __main__ import standardize, Data", number=50))
-    print(timeit.timeit("standardize_vec(Data.x, Data.M)", setup="from __main__ import standardize_vec, Data", number=50))
+    print(timeit.timeit("standardize(Data.x, Data.M)",
+                        setup="from __main__ import standardize, Data", number=50))
+    print(timeit.timeit("standardize_vec(Data.x, Data.M)",
+                        setup="from __main__ import standardize_vec, Data", number=50))
