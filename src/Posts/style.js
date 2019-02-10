@@ -6,6 +6,7 @@ export default theme => ({
     ...theme.typography.body1,
     overflowX: 'auto',
     marginBottom: '0',
+    marginTop: '-27px',
   },
   quote: {
     padding: '18px 27px',
