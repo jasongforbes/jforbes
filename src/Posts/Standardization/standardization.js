@@ -286,6 +286,15 @@ const Post = ({ classes, match }) => {
         </Highlight>
         <Typography variant="h4">Wrapping Up</Typography>
         <Typography variant="body1">
+          Below is the results from running the naive and vectorized algorithms on a vector of size
+          10000. In both cases, the window-size is 2048. The result is the average execution time
+          from 50 iterations.
+        </Typography>
+        <Highlight language="bash">
+          50 loops, best of 5: 11.53 sec per loop{'  '}# standardize{'\n'}
+          50 loops, best of 5: 17.58 msec per loop # standardize_vec
+        </Highlight>
+        <Typography variant="body1">
           There is a pitfall with the vectorized approach, and that is numerical error. The
           cumulative sum will sum together the entire vector, only to later get a subset of that
           summation. If the data has a wide range of values, the summation of large values may
