@@ -56,6 +56,11 @@ class TimeSeries extends Component {
                 display: true,
                 labelString: 'Sample',
               },
+              ticks: {
+                max: 2250,
+                stepSize: 750,
+                min: 0,
+              },
             },
           ],
         },
@@ -68,6 +73,7 @@ class TimeSeries extends Component {
     const { bias: prevBias, standardDeviation: prevStd } = prevProps;
     if (bias !== prevBias || standardDeviation !== prevStd) {
       return new Promise(() => {
+        this.updateDataSet();
         this.plot.update({ duration: 0 });
       });
     }
@@ -84,7 +90,6 @@ class TimeSeries extends Component {
 
   updateDataSet() {
     this.plot.data.datasets[0].data = this.getData();
-    this.plot.update({ duration: 0 });
   }
 
   render() {

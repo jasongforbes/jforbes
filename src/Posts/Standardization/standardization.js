@@ -8,6 +8,7 @@ import Highlight from '../../Highlight';
 import styles from '../style';
 import { getHelmet } from '../utilities';
 import TimeSeries from './timeSeries';
+import CustomizablePlot from './customizablePlot';
 import 'highlight.js/styles/ocean.css';
 
 const Post = ({ classes, match }) => {
@@ -85,7 +86,9 @@ const Post = ({ classes, match }) => {
         <Typography variant="body1">
           See how a change of bias or variance effects the signal.
         </Typography>
-        {/* TODO: Change bias / variance plot */}
+        <CustomizablePlot>
+          <TimeSeries />
+        </CustomizablePlot>
         <Typography variant="body1">
           All code in this post can be found on{' '}
           <a href="https://github.com/jasongforbes/jforbes.io/tree/master/src/Posts/Standardization">
