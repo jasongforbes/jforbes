@@ -1,5 +1,12 @@
 [
   {
+    "title": "Efficiently Standardizing Windowed Data for Machine Learning",
+    "date": "February 11, 2019",
+    "summary": "A common preprocessing step when operating on data is standardization. This is the procedure of making two data-sets comparable by removing any bias and normalizing the variance. This definition may seem arbitrary but the effect is quite easy to understand",
+    "slug": "/stardardizing-windowed-data",
+    "path": "Standardization"
+  },
+  {
     "title": "How to Linear Fit a Noisy Signal with Regular Discontinuities",
     "date": "January 1, 2019",
     "summary": "How could you estimate a noisy linear function if it contained regular discontinuities? The most natural place where this can come up is when the range of the function \"wraps around\". Angles and rotations are natural examples of this",
