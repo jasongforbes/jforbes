@@ -260,7 +260,7 @@ const Post = ({ classes, match }) => {
           Note the similarity to the vectorized operation <em>cumulative-summation</em>.
         </Typography>
         <div className={classes.math}>
-          <BlockMath math={'cumsum(x)_j = \\sum_{i}^{j} x_{i}'} />
+          <BlockMath math={'cumsum(\\bar x)_j = \\sum_{i}^{j} x_{i}'} />
         </div>
         <Typography variant="body1">
           Below is a vectorized implementation of the moving average filter. This implementation
