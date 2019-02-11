@@ -1,9 +1,9 @@
 [
   {
-    "title": "Efficiently Standardizing Windowed Data for Machine Learning",
+    "title": "How to Vectorize Data Standardization: Optimized Running-Standardization for Machine Learning",
     "date": "February 11, 2019",
     "summary": "A common preprocessing step when operating on data is standardization. This is the procedure of making two data-sets comparable by removing any bias and normalizing the variance. This definition may seem arbitrary but the effect is quite easy to understand",
-    "slug": "/stardardizing-windowed-data",
+    "slug": "/vectorized-data-standardization",
     "path": "Standardization"
   },
   {
