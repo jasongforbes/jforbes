@@ -9,6 +9,7 @@ import styles from '../style';
 import { getHelmet } from '../utilities';
 import TimeSeries from './timeSeries';
 import CustomizablePlot from './customizablePlot';
+import AnimatedPlot from './animatedPlot';
 import 'highlight.js/styles/ocean.css';
 
 const Post = ({ classes, match }) => {
@@ -119,6 +120,7 @@ const Post = ({ classes, match }) => {
           Performing this running standardization will reduce the effect of environmental changes.
           As a result, this increases the effectiveness of machine-learning algorithms.
         </Typography>
+        <AnimatedPlot />
         <Typography variant="h4">A Naive Approach</Typography>
         <Typography variant="body1">
           Below is a direct, yet inefficient, algorithm for windowed standardization.

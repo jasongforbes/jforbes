@@ -7,6 +7,7 @@
     "@material-ui/lab": "^3.0.0-alpha.25",
     "@tensorflow/tfjs": "^0.14.0",
     "chart.js": "^2.7.3",
+    "chartjs-plugin-annotation": "^0.5.7",
     "firebase": "^5.5.8",
     "highlight.js": "^9.13.1",
     "katex": "^0.10.0",

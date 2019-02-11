@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Chart from 'chart.js';
+import 'chartjs-plugin-annotation';
 import data from './data.json';
+import dataStandardize from './data.standardize.json';
 
 class TimeSeries extends Component {
   constructor(props) {
@@ -10,7 +12,15 @@ class TimeSeries extends Component {
   }
 
   componentDidMount() {
-    const { title } = this.props;
+    const {
+      bias,
+      title,
+      standardize,
+      showWindow,
+      standardDeviation,
+      windowStart,
+      windowSize,
+    } = this.props;
     this.plot = new Chart(this.ctx.current, {
       type: 'scatter',
       data: {
@@ -27,6 +37,23 @@ class TimeSeries extends Component {
       options: {
         legend: {
           display: false,
+        },
+        annotation: {
+          annotations: showWindow
+            ? [
+                {
+                  type: 'box',
+                  drawTime: 'beforeDatasetsDraw',
+                  yScaleID: 'y-axis-1',
+                  xScaleID: 'x-axis-1',
+                  yMin: bias * standardDeviation + 0.1,
+                  yMax: bias * standardDeviation - 0.1,
+                  xMin: windowStart,
+                  xMax: windowSize,
+                  backgroundColor: 'rgba(125, 66, 244, 0.2)',
+                },
+              ]
+            : [],
         },
         elements: {
           line: {
@@ -45,8 +72,8 @@ class TimeSeries extends Component {
                 labelString: 'Signal Strength',
               },
               ticks: {
-                max: 0.06,
-                min: -0.06,
+                max: standardize ? 4 : 0.06,
+                min: standardize ? -4 : -0.06,
               },
             },
           ],
@@ -69,9 +96,19 @@ class TimeSeries extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { bias, standardDeviation } = this.props;
-    const { bias: prevBias, standardDeviation: prevStd } = prevProps;
-    if (bias !== prevBias || standardDeviation !== prevStd) {
+    const { bias, standardDeviation, windowStart, maxValue } = this.props;
+    const {
+      bias: prevBias,
+      standardDeviation: prevStd,
+      windowStart: prevStart,
+      maxValue: prevMax,
+    } = prevProps;
+    if (
+      bias !== prevBias ||
+      standardDeviation !== prevStd ||
+      windowStart !== prevStart ||
+      maxValue !== prevMax
+    ) {
       return new Promise(() => {
         this.updateDataSet();
         this.plot.update({ duration: 0 });
@@ -81,15 +118,23 @@ class TimeSeries extends Component {
   }
 
   getData() {
-    const { bias, standardDeviation } = this.props;
-    return data.map((v, i) => ({
-      x: i,
-      y: (v + bias) * standardDeviation,
-    }));
+    const { bias, maxValue, standardDeviation, standardize } = this.props;
+    const toReturn = standardize ? dataStandardize : data;
+    return toReturn
+      .filter((v, i) => i <= maxValue)
+      .map((v, i) => ({
+        x: i,
+        y: (v + bias) * standardDeviation,
+      }));
   }
 
   updateDataSet() {
+    const { windowStart, windowSize, showWindow } = this.props;
     this.plot.data.datasets[0].data = this.getData();
+    if (showWindow) {
+      this.plot.options.annotation.annotations[0].xMin = windowStart;
+      this.plot.options.annotation.annotations[0].xMax = windowStart + windowSize;
+    }
   }
 
   render() {
@@ -105,12 +150,22 @@ TimeSeries.propTypes = {
   bias: PropTypes.number,
   standardDeviation: PropTypes.number,
   title: PropTypes.string,
+  windowStart: PropTypes.number,
+  windowSize: PropTypes.number,
+  showWindow: PropTypes.bool,
+  maxValue: PropTypes.number,
+  standardize: PropTypes.bool,
 };
 
 TimeSeries.defaultProps = {
   bias: 0,
   standardDeviation: 1,
   title: '',
+  windowStart: 0,
+  windowSize: 100,
+  showWindow: false,
+  maxValue: Infinity,
+  standardize: false,
 };
 
 export default TimeSeries;
